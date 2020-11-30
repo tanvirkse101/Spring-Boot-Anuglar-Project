@@ -1,6 +1,9 @@
 package com.example.restservice.models.tutorial;
 
 
+import com.sun.istack.NotNull;
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,9 +14,11 @@ public class Tutorial {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
     @Column(name = "title")
     private String title;
 
+    @Nullable
     @Column(name = "description")
     private String description;
 
@@ -22,6 +27,11 @@ public class Tutorial {
 
     public Tutorial() {
 
+    }
+    public Tutorial(String title, boolean published) {
+        this.title = title;
+//        this.description = "No description provided"; // default description
+        this.published = published;
     }
 
     public Tutorial(String title, String description, boolean published) {
@@ -56,6 +66,9 @@ public class Tutorial {
 
     public void setPublished(boolean isPublished) {
         this.published = isPublished;
+    }
+    public boolean getPublished() {
+        return published;
     }
 
     @Override
