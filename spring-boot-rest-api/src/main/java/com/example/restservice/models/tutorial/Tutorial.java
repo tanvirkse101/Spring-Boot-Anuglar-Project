@@ -1,37 +1,19 @@
 package com.example.restservice.models.tutorial;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.sun.istack.NotNull;
-import org.springframework.lang.Nullable;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "tutorials")
+@Document(collection = "tutorials")
 public class Tutorial {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private String id;
 
-    @NotNull
-    @Column(name = "title")
     private String title;
-
-    @Nullable
-    @Column(name = "description")
     private String description;
-
-    @Column(name = "published")
     private boolean published;
 
     public Tutorial() {
 
-    }
-    public Tutorial(String title, boolean published) {
-        this.title = title;
-//        this.description = "No description provided"; // default description
-        this.published = published;
     }
 
     public Tutorial(String title, String description, boolean published) {
@@ -40,7 +22,7 @@ public class Tutorial {
         this.published = published;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
@@ -67,6 +49,7 @@ public class Tutorial {
     public void setPublished(boolean isPublished) {
         this.published = isPublished;
     }
+
     public boolean getPublished() {
         return published;
     }
