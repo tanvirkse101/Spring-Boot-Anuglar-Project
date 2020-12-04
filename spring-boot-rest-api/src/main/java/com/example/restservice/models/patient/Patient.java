@@ -4,7 +4,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -25,12 +24,9 @@ import java.util.Date;
 public class Patient {
     @Id
     private String id;
-
     private String name;
-
     @CreatedDate
-    private LocalDateTime entrydate;
-
+    private Date entrydate;
     private Date dob;
     private Integer age;
     private String gender;
@@ -70,7 +66,7 @@ public class Patient {
         this.name = name;
     }
 
-    public LocalDateTime getEntrydate() {
+    public Date getEntrydate() {
         return entrydate;
     }
 
