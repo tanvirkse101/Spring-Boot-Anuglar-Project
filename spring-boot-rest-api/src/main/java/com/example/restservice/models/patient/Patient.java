@@ -4,35 +4,22 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import static java.util.Calendar.DATE;
-import static java.util.Calendar.MONTH;
+
 import static java.util.Calendar.YEAR;
 
-/**
- * patient_id (Primary Key) - generate a 10 digits unique identifier
- * patient_name
- * entry_datetime
- * date_of_birth
- * age
- * gender
- * occupation
- * health_insurance_no
- * health_care_provider
- * patient_address
- * contact_no
- * doctor_id (Foreign key)
- */
 @Document(collection = "patients")
 public class Patient {
     @Id
     private String id;
     private String name;
     @CreatedDate
-    private Date entrydate;
-    private Date dob;
+    private LocalDate entrydate;
+    private LocalDate dob;
     private Integer age;
     private String gender;
     private String occupation;
@@ -46,10 +33,10 @@ public class Patient {
 
     }
 
-    public Patient(String name, Date dob, String gender, String occupation, Integer healthinsuranceno, String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
+    public Patient(String name, LocalDate dob, String gender, String occupation, Integer healthinsuranceno, String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
         this.name = name;
         this.dob = dob;
-        this.age = getDiffYears(dob, new Date());
+        this.age = getDiffYears(convertToDateViaInstant(dob), new Date());
         this.gender = gender;
         this.occupation = occupation;
         this.healthinsuranceno = healthinsuranceno;
@@ -71,15 +58,15 @@ public class Patient {
         this.name = name;
     }
 
-    public Date getEntrydate() {
+    public LocalDate getEntrydate() {
         return entrydate;
     }
 
-    public Date getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
@@ -147,15 +134,16 @@ public class Patient {
         this.doctorid = doctorid;
     }
 
+    public Date convertToDateViaInstant(LocalDate dateToConvert) {
+        return java.util.Date.from(dateToConvert.atStartOfDay()
+                .atZone(ZoneId.systemDefault())
+                .toInstant());
+    }
+
     private int getDiffYears(Date first, Date last) {
         Calendar a = getCalendar(first);
         Calendar b = getCalendar(last);
-        int diff = b.get(YEAR) - a.get(YEAR);
-        if (a.get(MONTH) > b.get(MONTH) ||
-                (a.get(MONTH) == b.get(MONTH) && a.get(DATE) > b.get(DATE))) {
-            diff--;
-        }
-        return diff;
+        return b.get(YEAR) - a.get(YEAR);
     }
 
     private Calendar getCalendar(Date date) {

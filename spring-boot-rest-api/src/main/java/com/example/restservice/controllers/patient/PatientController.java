@@ -1,10 +1,12 @@
 package com.example.restservice.controllers.patient;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -63,6 +65,21 @@ public class PatientController {
     public ResponseEntity<List<Patient>> getByPatientname(@PathVariable("name") String name) {
         List<Patient> patients = new ArrayList<Patient>();
         List<Patient> patientData = patientRepository.findByNameContaining(name);
+
+        if (!patientData.isEmpty()) {
+            patientRepository.findByNameContaining(name).forEach(patients::add);
+            return new ResponseEntity<>(patients, HttpStatus.OK);
+
+        } else {
+
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/patients/namedob/{name}/{dob}")
+    public ResponseEntity<List<Patient>> getByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") @RequestParam("LocalDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dob) {
+        List<Patient> patients = new ArrayList<Patient>();
+        List<Patient> patientData = patientRepository.findByNameContainingAndDob(name, dob);
 
         if (!patientData.isEmpty()) {
             patientRepository.findByNameContaining(name).forEach(patients::add);
