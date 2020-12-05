@@ -18,8 +18,8 @@ public class Patient {
     private String id;
     private String name;
     @CreatedDate
-    private LocalDate entrydate;
-    private LocalDate dob;
+    private Date entrydate;
+    private String dob;
     private Integer age;
     private String gender;
     private String occupation;
@@ -33,10 +33,10 @@ public class Patient {
 
     }
 
-    public Patient(String name, LocalDate dob, String gender, String occupation, Integer healthinsuranceno, String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
+    public Patient(String name, String dob, String gender, String occupation, Integer healthinsuranceno, String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
         this.name = name;
         this.dob = dob;
-        this.age = getDiffYears(convertToDateViaInstant(dob), new Date());
+        this.age = getDiffYears(convertToDateViaInstant(LocalDate.parse(dob)), new Date());
         this.gender = gender;
         this.occupation = occupation;
         this.healthinsuranceno = healthinsuranceno;
@@ -58,15 +58,15 @@ public class Patient {
         this.name = name;
     }
 
-    public LocalDate getEntrydate() {
+    public Date getEntrydate() {
         return entrydate;
     }
 
-    public LocalDate getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(LocalDate dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
