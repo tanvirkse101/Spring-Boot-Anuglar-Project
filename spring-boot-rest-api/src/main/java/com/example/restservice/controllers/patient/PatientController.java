@@ -34,7 +34,7 @@ public class PatientController {
 
             if (name == null) {
                 patientRepository.findAll().forEach(patients::add);
-            }else {
+            } else {
                 patientRepository.findByNameContaining(name).forEach(patients::add);
             }
 
@@ -60,9 +60,9 @@ public class PatientController {
     }
 
     @GetMapping("/patients/name/{name}")
-    public ResponseEntity<List<Patient>>  getByPatientname(@PathVariable("name") String name) {
+    public ResponseEntity<List<Patient>> getByPatientname(@PathVariable("name") String name) {
         List<Patient> patients = new ArrayList<Patient>();
-        List <Patient> patientData = patientRepository.findByNameContaining(name);
+        List<Patient> patientData = patientRepository.findByNameContaining(name);
 
         if (!patientData.isEmpty()) {
             patientRepository.findByNameContaining(name).forEach(patients::add);
@@ -80,7 +80,6 @@ public class PatientController {
             Patient _patient = patientRepository.save(new Patient(
                     patient.getName(),
                     patient.getDob(),
-                    patient.getAge(),
                     patient.getGender(),
                     patient.getOccupation(),
                     patient.getHealthinsuranceno(),

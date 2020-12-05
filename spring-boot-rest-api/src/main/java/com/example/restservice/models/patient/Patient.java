@@ -4,7 +4,12 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import static java.util.Calendar.DATE;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
 
 /**
  * patient_id (Primary Key) - generate a 10 digits unique identifier
@@ -37,14 +42,14 @@ public class Patient {
     private Integer contact;
     private String doctorid;
 
-    public Patient(){
+    public Patient() {
 
     }
 
-    public Patient(String name, Date dob, Integer age, String gender, String occupation, Integer healthinsuranceno, String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
+    public Patient(String name, Date dob, String gender, String occupation, Integer healthinsuranceno, String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
         this.name = name;
         this.dob = dob;
-        this.age = age;
+        this.age = getDiffYears(dob, new Date());
         this.gender = gender;
         this.occupation = occupation;
         this.healthinsuranceno = healthinsuranceno;
@@ -140,6 +145,23 @@ public class Patient {
 
     public void setDoctorid(String doctorid) {
         this.doctorid = doctorid;
+    }
+
+    private int getDiffYears(Date first, Date last) {
+        Calendar a = getCalendar(first);
+        Calendar b = getCalendar(last);
+        int diff = b.get(YEAR) - a.get(YEAR);
+        if (a.get(MONTH) > b.get(MONTH) ||
+                (a.get(MONTH) == b.get(MONTH) && a.get(DATE) > b.get(DATE))) {
+            diff--;
+        }
+        return diff;
+    }
+
+    private Calendar getCalendar(Date date) {
+        Calendar cal = Calendar.getInstance(Locale.US);
+        cal.setTime(date);
+        return cal;
     }
 
     @Override
