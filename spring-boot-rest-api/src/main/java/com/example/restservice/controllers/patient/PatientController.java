@@ -82,7 +82,7 @@ public class PatientController {
         List<Patient> patientData = patientRepository.findByNameContainingAndDob(name, dob);
 
         if (!patientData.isEmpty()) {
-            patientRepository.findByNameContaining(name).forEach(patients::add);
+            patientRepository.findByNameContainingAndDob(name,dob).forEach(patients::add);
             return new ResponseEntity<>(patients, HttpStatus.OK);
 
         } else {
