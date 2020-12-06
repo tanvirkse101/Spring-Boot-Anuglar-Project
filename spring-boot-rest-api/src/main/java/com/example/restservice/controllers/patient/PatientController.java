@@ -80,7 +80,7 @@ public class PatientController {
         List<Patient> patientData = patientRepository.findByNameContainingAndDob(name, dob);
 
         if (!patientData.isEmpty()) {
-            patientRepository.findByNameContainingAndDob(name,dob).forEach(patients::add);
+            patientRepository.findByNameContainingAndDob(name, dob).forEach(patients::add);
             return new ResponseEntity<>(patients, HttpStatus.OK);
 
         } else {
@@ -112,18 +112,46 @@ public class PatientController {
     @PutMapping("/patients/{id}")
     public ResponseEntity<Patient> updatePatient(@PathVariable("id") String id, @RequestBody Patient patient) {
         Optional<Patient> patientData = patientRepository.findById(id);
+
         if (patientData.isPresent()) {
             Patient _patient = patientData.get();
-            _patient.setName(patient.getName());
-            _patient.setDob(patient.getDob());
-            _patient.setAge(patient.getAge());
-            _patient.setGender(patient.getGender());
-            _patient.setOccupation(patient.getOccupation());
-            _patient.setHealthinsuranceno(patient.getHealthinsuranceno());
-            _patient.setHealthcareprovider(patient.getHealthcareprovider());
-            _patient.setPatientaddress(patient.getPatientaddress());
-            _patient.setContact(patient.getContact());
-            _patient.setDoctorid(patient.getDoctorid());
+
+            if (patient.getName() != null) {
+                _patient.setName(patient.getName());
+            }
+
+            if (patient.getDob() != null) {
+                _patient.setDob(patient.getDob());
+            }
+
+            if (patient.getAge() != null) {
+                _patient.setAge(patient.getAge());
+            }
+
+            if (patient.getGender() != null) {
+                _patient.setGender(patient.getGender());
+            }
+
+            if (patient.getOccupation() != null) {
+                _patient.setOccupation(patient.getOccupation());
+            }
+
+            if (patient.getHealthinsuranceno() != null) {
+                _patient.setHealthinsuranceno(patient.getHealthinsuranceno());
+            }
+
+            if (patient.getHealthcareprovider() != null) {
+                _patient.setHealthcareprovider(patient.getHealthcareprovider());
+            }
+
+            if (patient.getContact() != null) {
+                _patient.setContact(patient.getContact());
+            }
+
+            if (patient.getDoctorid() != null) {
+                _patient.setDoctorid(patient.getDoctorid());
+            }
+
             return new ResponseEntity<>(patientRepository.save(_patient), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

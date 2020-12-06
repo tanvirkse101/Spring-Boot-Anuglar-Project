@@ -34,7 +34,7 @@ public class DoctorController {
 
             if (doctorname == null) {
                 doctorRepository.findAll().forEach(doctors::add);
-            }else {
+            } else {
                 doctorRepository.findByDoctornameContaining(doctorname).forEach(doctors::add);
             }
 
@@ -60,9 +60,9 @@ public class DoctorController {
     }
 
     @GetMapping("/doctors/name/{doctorname}")
-    public ResponseEntity<List<Doctor>>  getDoctorByDoctorname(@PathVariable("doctorname") String doctorname) {
+    public ResponseEntity<List<Doctor>> getDoctorByDoctorname(@PathVariable("doctorname") String doctorname) {
         List<Doctor> doctors = new ArrayList<Doctor>();
-        List <Doctor> doctorData = doctorRepository.findByDoctornameContaining(doctorname);
+        List<Doctor> doctorData = doctorRepository.findByDoctornameContaining(doctorname);
 
         if (!doctorData.isEmpty()) {
             doctorRepository.findByDoctornameContaining(doctorname).forEach(doctors::add);
@@ -96,13 +96,33 @@ public class DoctorController {
         Optional<Doctor> doctorData = doctorRepository.findById(id);
 
         if (doctorData.isPresent()) {
+
             Doctor _doctor = doctorData.get();
-            _doctor.setDoctorname(doctor.getDoctorname());
-            _doctor.setSpeciality(doctor.getSpeciality());
-            _doctor.setDoctor_address(doctor.getDoctor_address());
-            _doctor.setHospital_name(doctor.getHospital_name());
-            _doctor.setAbout(doctor.getAbout());
-            _doctor.setProfile_picture(doctor.getProfile_picture());
+
+            if (doctor.getDoctorname() != null) {
+                _doctor.setDoctorname(doctor.getDoctorname());
+            }
+
+            if (doctor.getSpeciality() != null) {
+                _doctor.setSpeciality(doctor.getSpeciality());
+            }
+
+            if (doctor.getDoctor_address() != null) {
+                _doctor.setDoctor_address(doctor.getDoctor_address());
+            }
+
+            if (doctor.getHospital_name() != null) {
+                _doctor.setHospital_name(doctor.getHospital_name());
+            }
+
+            if (doctor.getAbout() != null) {
+                _doctor.setAbout(doctor.getAbout());
+            }
+
+            if (doctor.getProfile_picture() != null) {
+                _doctor.setProfile_picture(doctor.getProfile_picture());
+            }
+
             return new ResponseEntity<>(doctorRepository.save(_doctor), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
