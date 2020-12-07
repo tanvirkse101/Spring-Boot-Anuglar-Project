@@ -5,12 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Calendar;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.Locale;
-
-import static java.util.Calendar.YEAR;
 
 @Document(collection = "patients")
 public class Patient {
@@ -20,7 +16,7 @@ public class Patient {
     @CreatedDate
     private Date entrydate;
     private String dob;
-    private Integer age;
+    private Long age;
     private String gender;
     private String occupation;
     private Integer healthinsuranceno;
@@ -36,7 +32,7 @@ public class Patient {
     public Patient(String name, String dob, String gender, String occupation, Integer healthinsuranceno, String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
         this.name = name;
         this.dob = dob;
-        this.age = getDiffYears(convertToDateViaInstant(LocalDate.parse(dob)), new Date());
+        this.age = calculateAge(LocalDate.parse(dob));
         this.gender = gender;
         this.occupation = occupation;
         this.healthinsuranceno = healthinsuranceno;
@@ -58,25 +54,15 @@ public class Patient {
         this.name = name;
     }
 
-    public Date getEntrydate() {
-        return entrydate;
-    }
+    public Date getEntrydate() { return entrydate; }
 
-    public String getDob() {
-        return dob;
-    }
+    public String getDob() { return dob; }
 
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
+    public void setDob(String dob) { this.dob = dob;}
 
-    public Integer getAge() {
-        return age;
-    }
+    public Long getAge() { return age; }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+    public void setAge(Long age) { this.age = age; }
 
     public String getGender() {
         return gender;
@@ -114,9 +100,7 @@ public class Patient {
         return patientaddress;
     }
 
-    public void setPatientaddress(String patientaddress) {
-        this.patientaddress = patientaddress;
-    }
+    public void setPatientaddress(String patientaddress) { this.patientaddress = patientaddress; }
 
     public Integer getContact() {
         return contact;
@@ -134,22 +118,8 @@ public class Patient {
         this.doctorid = doctorid;
     }
 
-    public Date convertToDateViaInstant(LocalDate dateToConvert) {
-        return java.util.Date.from(dateToConvert.atStartOfDay()
-                .atZone(ZoneId.systemDefault())
-                .toInstant());
-    }
-
-    private int getDiffYears(Date first, Date last) {
-        Calendar a = getCalendar(first);
-        Calendar b = getCalendar(last);
-        return b.get(YEAR) - a.get(YEAR);
-    }
-
-    private Calendar getCalendar(Date date) {
-        Calendar cal = Calendar.getInstance(Locale.US);
-        cal.setTime(date);
-        return cal;
+    public long calculateAge(LocalDate dob){
+        return ChronoUnit.YEARS.between(dob,LocalDate.now());
     }
 
     @Override

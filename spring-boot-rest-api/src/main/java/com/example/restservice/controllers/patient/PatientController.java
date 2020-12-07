@@ -144,6 +144,10 @@ public class PatientController {
                 _patient.setHealthcareprovider(patient.getHealthcareprovider());
             }
 
+            if (patient.getPatientaddress() != null) {
+                _patient.setPatientaddress(patient.getPatientaddress());
+            }
+
             if (patient.getContact() != null) {
                 _patient.setContact(patient.getContact());
             }
