@@ -19,7 +19,8 @@ public class Doctor {
 
     }
 
-    public Doctor(String doctorname, String speciality, String doctor_address, String hospital_name,String about, String profile_picture){
+    public Doctor(String doctorname, String speciality, String doctor_address, String hospital_name,
+                  String about, String profile_picture){
         this.doctorname = doctorname;
         this.speciality = speciality;
         this.doctor_address = doctor_address;

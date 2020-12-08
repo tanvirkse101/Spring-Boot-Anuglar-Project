@@ -29,7 +29,8 @@ public class Patient {
 
     }
 
-    public Patient(String name, String dob, String gender, String occupation, Integer healthinsuranceno, String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
+    public Patient(String name, String dob, String gender, String occupation, Integer healthinsuranceno,
+                   String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
         this.name = name;
         this.dob = dob;
         this.age = calculateAge(LocalDate.parse(dob));
