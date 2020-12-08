@@ -22,7 +22,7 @@ import java.util.List;
  * patient_history
  * follow_up_doctor_id
  */
-@Document(collection = "Reports")
+@Document(collection = "reports")
 public class Report {
     @Id
     private String id;
@@ -56,7 +56,7 @@ public class Report {
         this.followupdoctorid = followupdoctorid;
     }
 
-    public  Report() {
+    public Report() {
 
     }
 
