@@ -1,6 +1,8 @@
 package com.example.restservice.controllers.report;
 
+import com.example.restservice.models.patient.Patient;
 import com.example.restservice.models.report.Report;
+import com.example.restservice.repository.PatientRepository;
 import com.example.restservice.repository.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,6 +56,29 @@ public class ReportController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    // Test
+
+    @Autowired
+    PatientRepository patientRepository;
+
+    @GetMapping("/reports/namedob/{name}/{dob}")
+    public ResponseEntity<Report> getReportByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") String dob) {
+        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(name, dob);
+        if (patientData.isPresent()) {
+            Patient patient = patientData.get();
+            Optional<Report> reportData = reportRepository.findByPatientid(patient.getId());
+            if (reportData.isPresent()) {
+                return new ResponseEntity<>(reportData.get(), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // Test
 
     @PostMapping("/reports")
     public ResponseEntity<Report> createReport(@RequestBody Report report) {
@@ -144,6 +169,5 @@ public class ReportController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 }

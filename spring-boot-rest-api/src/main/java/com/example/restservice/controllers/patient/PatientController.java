@@ -75,16 +75,12 @@ public class PatientController {
     }
 
     @GetMapping("/patients/namedob/{name}/{dob}")
-    public ResponseEntity<List<Patient>> getByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") String dob) {
-        List<Patient> patients = new ArrayList<Patient>();
-        List<Patient> patientData = patientRepository.findByNameContainingAndDob(name, dob);
+    public ResponseEntity<Patient> getByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") String dob) {
+        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(name,dob);
 
-        if (!patientData.isEmpty()) {
-            patientRepository.findByNameContainingAndDob(name, dob).forEach(patients::add);
-            return new ResponseEntity<>(patients, HttpStatus.OK);
-
+        if (patientData.isPresent()) {
+            return new ResponseEntity<>(patientData.get(), HttpStatus.OK);
         } else {
-
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
