@@ -141,6 +141,10 @@ public class ReportController {
                 _report.setPulserate(report.getPulserate());
             }
 
+            if (report.getWeight() != null) {
+                _report.setWeight(report.getWeight());
+            }
+
             if (report.getAllergies() != null) {
                 _report.setAllergies(report.getAllergies());
             }
