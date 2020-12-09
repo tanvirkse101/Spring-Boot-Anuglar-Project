@@ -1,5 +1,6 @@
 package com.example.restservice.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,5 +9,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface PatientRepository extends MongoRepository<Patient, String> {
     List<Patient> findByNameContaining(String name);
-    Optional<Patient> findByNameContainingAndDob(String name, String dob);
+    Optional<Patient> findByNameContainingAndDob(String name, Date dob);
 }

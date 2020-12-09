@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -15,7 +16,8 @@ public class Patient {
     private String name;
     @CreatedDate
     private Date entrydate;
-    private String dob;
+    private Date dob;
+    // private String dob;
     private Long age;
     private String gender;
     private String occupation;
@@ -29,11 +31,11 @@ public class Patient {
 
     }
 
-    public Patient(String name, String dob, String gender, String occupation, Integer healthinsuranceno,
+    public Patient(String name, Date dob, String gender, String occupation, Integer healthinsuranceno,
                    String healthcareprovider, String patientaddress, Integer contact, String doctorid) {
         this.name = name;
         this.dob = dob;
-        this.age = calculateAge(LocalDate.parse(dob));
+        this.age = calculateAge(convertToLocalDateViaInstant(dob));
         this.gender = gender;
         this.occupation = occupation;
         this.healthinsuranceno = healthinsuranceno;
@@ -57,9 +59,9 @@ public class Patient {
 
     public Date getEntrydate() { return entrydate; }
 
-    public String getDob() { return dob; }
+    public Date getDob() { return dob; }
 
-    public void setDob(String dob) { this.dob = dob;}
+    public void setDob(Date dob) { this.dob = dob;}
 
     public Long getAge() { return age; }
 
@@ -117,6 +119,12 @@ public class Patient {
 
     public void setDoctorid(String doctorid) {
         this.doctorid = doctorid;
+    }
+
+    public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 
     public long calculateAge(LocalDate dob){

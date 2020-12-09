@@ -57,14 +57,35 @@ public class ReportController {
         }
     }
 
-    // Test
+///*
+//
+//    @Autowired
+//    PatientRepository patientRepository;
+//
+//    @GetMapping("/reports/namedob/{name}/{dob}")
+//    public ResponseEntity<Report> getReportByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") String dob) {
+//        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(name, dob);
+//        if (patientData.isPresent()) {
+//            Patient patient = patientData.get();
+//            Optional<Report> reportData = reportRepository.findByPatientid(patient.getId());
+//            if (reportData.isPresent()) {
+//                return new ResponseEntity<>(reportData.get(), HttpStatus.OK);
+//            } else {
+//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//            }
+//        } else {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
+//*/
+
 
     @Autowired
     PatientRepository patientRepository;
 
-    @GetMapping("/reports/namedob/{name}/{dob}")
-    public ResponseEntity<Report> getReportByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") String dob) {
-        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(name, dob);
+    @PostMapping("/reports/namedob")
+    public ResponseEntity<Report> getReportByPatientNameandDob(@RequestBody Patient p) {
+        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(p.getName(), p.getDob());
         if (patientData.isPresent()) {
             Patient patient = patientData.get();
             Optional<Report> reportData = reportRepository.findByPatientid(patient.getId());
@@ -78,7 +99,6 @@ public class ReportController {
         }
     }
 
-    // Test
 
     @PostMapping("/reports")
     public ResponseEntity<Report> createReport(@RequestBody Report report) {

@@ -74,9 +74,19 @@ public class PatientController {
         }
     }
 
-    @GetMapping("/patients/namedob/{name}/{dob}")
-    public ResponseEntity<Patient> getByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") String dob) {
-        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(name,dob);
+    //    @GetMapping("/patients/namedob/{name}/{dob}")
+//    public ResponseEntity<Patient> getByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") String dob) {
+//        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(name,dob);
+//
+//        if (patientData.isPresent()) {
+//            return new ResponseEntity<>(patientData.get(), HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
+    @PostMapping("/patients/namedob")
+    public ResponseEntity<Patient> getByPatientNameandDob(@RequestBody Patient p) {
+        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(p.getName(), p.getDob());
 
         if (patientData.isPresent()) {
             return new ResponseEntity<>(patientData.get(), HttpStatus.OK);
