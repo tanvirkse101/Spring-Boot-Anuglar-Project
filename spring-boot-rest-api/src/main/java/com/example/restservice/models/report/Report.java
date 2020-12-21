@@ -7,21 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 
-/**
- * report_id
- * patient_id
- * doctor_id
- * created_datetime
- * blood_presure
- * pulse_rate
- * weight
- * allergies(list)
- * disabilities(list)
- * medicine(list of document)
- * diet(list of document)
- * patient_history
- * follow_up_doctor_id
- */
 @Document(collection = "reports")
 public class Report {
     @Id

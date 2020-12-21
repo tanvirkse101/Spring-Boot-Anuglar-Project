@@ -57,29 +57,6 @@ public class ReportController {
         }
     }
 
-///*
-//
-//    @Autowired
-//    PatientRepository patientRepository;
-//
-//    @GetMapping("/reports/namedob/{name}/{dob}")
-//    public ResponseEntity<Report> getReportByPatientNameandDob(@PathVariable("name") String name, @PathVariable("dob") String dob) {
-//        Optional<Patient> patientData = patientRepository.findByNameContainingAndDob(name, dob);
-//        if (patientData.isPresent()) {
-//            Patient patient = patientData.get();
-//            Optional<Report> reportData = reportRepository.findByPatientid(patient.getId());
-//            if (reportData.isPresent()) {
-//                return new ResponseEntity<>(reportData.get(), HttpStatus.OK);
-//            } else {
-//                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//            }
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-//*/
-
-
     @Autowired
     PatientRepository patientRepository;
 
@@ -123,7 +100,7 @@ public class ReportController {
     }
 
     @PutMapping("/reports/{id}")
-    public ResponseEntity<Report> updatePatient(@PathVariable("id") String id, @RequestBody Report report) {
+    public ResponseEntity<Report> updateReport(@PathVariable("id") String id, @RequestBody Report report) {
         Optional<Report> reportData = reportRepository.findById(id);
 
         if (reportData.isPresent()) {
@@ -131,6 +108,10 @@ public class ReportController {
 
             if (report.getPatientid() != null) {
                 _report.setPatientid(report.getPatientid());
+            }
+
+            if (report.getDoctorid() != null) {
+                _report.setDoctorid(report.getDoctorid());
             }
 
             if (report.getBloodpressure() != null) {
@@ -176,7 +157,7 @@ public class ReportController {
     }
 
     @DeleteMapping("/reports/{id}")
-    public ResponseEntity<HttpStatus> deletePatient(@PathVariable("id") String id) {
+    public ResponseEntity<HttpStatus> deleteReport(@PathVariable("id") String id) {
         try {
             reportRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -186,7 +167,7 @@ public class ReportController {
     }
 
     @DeleteMapping("/reports")
-    public ResponseEntity<HttpStatus> deleteAllPatients() {
+    public ResponseEntity<HttpStatus> deleteAllReports() {
         try {
             reportRepository.deleteAll();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

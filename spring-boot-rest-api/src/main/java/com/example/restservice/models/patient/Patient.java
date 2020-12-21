@@ -17,7 +17,6 @@ public class Patient {
     @CreatedDate
     private Date entrydate;
     private Date dob;
-    // private String dob;
     private Long age;
     private String gender;
     private String occupation;
