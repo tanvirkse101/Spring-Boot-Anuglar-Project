@@ -9,8 +9,13 @@ import { TutorialDetailsComponent } from './components/tutorial/tutorial-details
 import { CreateTutorialComponent } from './components/tutorial/create-tutorial/create-tutorial.component';
 import { UpdateTutorialComponent } from './components/tutorial/update-tutorial/update-tutorial.component';
 import { TutorialListComponent } from './components/tutorial/tutorial-list/tutorial-list.component';
-import {FormsModule} from '@angular/forms';
-import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
+import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
+import { DoctorComponent } from './components/doctor/doctor.component';
+import { DoctorAddComponent } from './components/doctor/doctor-add/doctor-add.component';
+import { DoctorListComponent } from './components/doctor/doctor-list/doctor-list.component';
+import { DoctorDetailsComponent } from './components/doctor/doctor-details/doctor-details.component';
+import { DoctorEditComponent } from './components/doctor/doctor-edit/doctor-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +24,22 @@ import { AddDoctorComponent } from './doctor/add-doctor/add-doctor.component';
     CreateTutorialComponent,
     UpdateTutorialComponent,
     TutorialListComponent,
-    AddDoctorComponent
+    HeaderComponent,
+    DoctorComponent,
+    DoctorAddComponent,
+    DoctorListComponent,
+    DoctorDetailsComponent,
+    DoctorEditComponent,
   ],
-    imports: [
-        RouterModule,
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-    ],
+  imports: [
+    RouterModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

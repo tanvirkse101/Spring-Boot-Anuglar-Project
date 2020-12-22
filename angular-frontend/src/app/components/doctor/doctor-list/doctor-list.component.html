@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Speciality</th>
+        <th scope="col">Hospital</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let doctor of doctors | async; let i = index" style="cursor: pointer;"
+          (click)="doctorDetails(doctor.id)">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ doctor.doctorname }}</td>
+        <td>{{ doctor.speciality }}</td>
+        <td>{{ doctor.hospital_name }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

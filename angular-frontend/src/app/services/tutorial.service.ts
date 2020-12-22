@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 
 const baseUrl = 'http://localhost:8080/api/tutorials';
@@ -10,14 +10,15 @@ const baseUrl = 'http://localhost:8080/api/tutorials';
 })
 export class TutorialService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAll(): Observable<any> {
     return this.http.get(baseUrl);
   }
 
   get(id: string): Observable<any> {
-    return this.http.get(`${baseUrl}/${id}`);
+    return this.http.get(`${ baseUrl }/${ id }`);
   }
 
   create(data: object): Observable<object> {
@@ -25,11 +26,11 @@ export class TutorialService {
   }
 
   update(id: string, data: object): Observable<object> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+    return this.http.put(`${ baseUrl }/${ id }`, data);
   }
 
   delete(id: string): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
+    return this.http.delete(`${ baseUrl }/${ id }`);
   }
 
   deleteAll(): Observable<any> {
@@ -37,6 +38,6 @@ export class TutorialService {
   }
 
   findByTitle(title: string): Observable<any> {
-    return this.http.get(`${baseUrl}?title=${title}`);
+    return this.http.get(`${ baseUrl }?title=${ title }`);
   }
 }
