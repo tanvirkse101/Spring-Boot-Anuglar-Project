@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Doctor } from '../../../classes/doctor';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DoctorService } from '../../../services/doctor.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -9,9 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './doctor-list.component.html',
   styleUrls: [ './doctor-list.component.css' ]
 })
-export class DoctorListComponent implements OnInit {
+export class DoctorListComponent implements OnInit, OnDestroy {
 
   doctors: Observable<Doctor[]>;
+  subscription: Subscription;
 
   constructor(private doctorService: DoctorService,
               private router: Router,
@@ -20,6 +21,18 @@ export class DoctorListComponent implements OnInit {
 
   ngOnInit(): void {
     this.reloadData();
+    this.subscription = this.doctorService.getListUpdateAlert().subscribe(
+      (message) => {
+        if (message) {
+          this.reloadData();
+          console.log(message);
+        }
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 
@@ -27,21 +40,11 @@ export class DoctorListComponent implements OnInit {
     this.doctors = this.doctorService.getAll();
   }
 
-  deleteDoctor(id: string) {
-    this.doctorService.delete(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        },
-        error => console.log(error));
-  }
-
   doctorDetails(id: string) {
     this.router.navigate([ 'details', id ], { relativeTo: this.route });
   }
 
-  updateDoctor(id: string) {
-    this.router.navigate([ 'update', id ]);
+  addDoctor() {
+    this.router.navigate([ 'add' ], { relativeTo: this.route });
   }
 }

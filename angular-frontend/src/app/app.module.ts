@@ -16,6 +16,7 @@ import { DoctorAddComponent } from './components/doctor/doctor-add/doctor-add.co
 import { DoctorListComponent } from './components/doctor/doctor-list/doctor-list.component';
 import { DoctorDetailsComponent } from './components/doctor/doctor-details/doctor-details.component';
 import { DoctorEditComponent } from './components/doctor/doctor-edit/doctor-edit.component';
+import { DoctorService } from './services/doctor.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { DoctorEditComponent } from './components/doctor/doctor-edit/doctor-edit
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [DoctorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

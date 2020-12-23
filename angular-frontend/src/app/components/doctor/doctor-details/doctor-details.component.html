@@ -1,11 +1,40 @@
 <div class="row justify-content-center">
-  <div class="card">
-    <img class="card-img-top img-fluid" src="" alt="Doctor image">
+  <div class="card" style="width: 100%;">
+    <img class="card-img-top p-2" [src]="doctor.profile_picture" alt="Doctor image">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="row">
+        <div class="col-8"><h5 class="card-title">Doctor Details:</h5></div>
+        <div class="col">
+          <button class="btn-sm btn-success" (click)="updateDoctor(doctor.id)">Update</button>
+          <button class="btn-sm btn-danger ml-2" (click)="deleteDoctor(doctor.id)">Delete</button>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-3"><h6>Name:</h6></div>
+        <div class="col-md-3">{{ doctor.doctorname }}</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-3"><h6>Speciality:</h6></div>
+        <div class="col-md-3">{{ doctor.speciality }}</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-3"><h6>Hospital:</h6></div>
+        <div class="col-md-3">{{ doctor.hospital_name }}</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-3"><h6>Address:</h6></div>
+        <div class="col-md-3">{{ doctor.doctor_address }}</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-3"><h6>About:</h6></div>
+        <div class="col-md-3">{{ doctor.about }}</div>
+      </div>
     </div>
   </div>
 </div>

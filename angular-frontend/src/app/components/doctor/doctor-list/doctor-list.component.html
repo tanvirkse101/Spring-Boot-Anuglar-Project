@@ -1,5 +1,6 @@
 <div class="card">
   <div class="card-body">
+    <h4>Doctor List:</h4>
     <table class="table table-hover">
       <thead class="thead-dark">
       <tr>
@@ -10,7 +11,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let doctor of doctors | async; let i = index" style="cursor: pointer;"
+      <tr *ngFor="let doctor of doctors | async; let i = index" style="cursor: pointer; "
           (click)="doctorDetails(doctor.id)">
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ doctor.doctorname }}</td>
@@ -19,5 +20,7 @@
       </tr>
       </tbody>
     </table>
+    <hr>
+    <button type="button" class="btn btn-primary mt-2" (click)="addDoctor()"> + Add new doctor</button>
   </div>
 </div>

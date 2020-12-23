@@ -6,7 +6,6 @@ import { UpdateTutorialComponent } from './components/tutorial/update-tutorial/u
 import { TutorialListComponent } from './components/tutorial/tutorial-list/tutorial-list.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { DoctorAddComponent } from './components/doctor/doctor-add/doctor-add.component';
-import { DoctorListComponent } from './components/doctor/doctor-list/doctor-list.component';
 import { DoctorDetailsComponent } from './components/doctor/doctor-details/doctor-details.component';
 import { DoctorEditComponent } from './components/doctor/doctor-edit/doctor-edit.component';
 
@@ -20,7 +19,6 @@ const routes: Routes = [
   {
     path: 'doctors', component: DoctorComponent, children: [
       { path: 'add', component: DoctorAddComponent },
-      { path: 'list', component: DoctorListComponent },
       { path: 'details/:id', component: DoctorDetailsComponent },
       { path: 'update/:id', component: DoctorEditComponent }
     ]
