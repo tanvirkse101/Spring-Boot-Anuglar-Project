@@ -22,5 +22,43 @@
     </table>
     <hr>
     <button type="button" class="btn btn-primary mt-2" (click)="addDoctor()"> + Add new doctor</button>
+    <hr>
+    <div class="input-group mt-2">
+      <div class="input-group-prepend">
+        <label>
+          <input #input type="text" class="form-control mr-1" placeholder="Enter doctor name">
+        </label>
+        <span>
+          <button class="btn btn-secondary ml-2" type="button" data-toggle="collapse" data-target="#collapseExample"
+                  aria-expanded="false" aria-controls="collapseExample"
+                  (click)="getDoctorsByName(input.value)">Find</button>
+        </span>
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample">
+      <table class="table table-hover mt-2">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Speciality</th>
+          <th scope="col">Hospital</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let doctorByName of doctorsByName | async; let i = index" style="cursor: pointer; "
+            (click)="doctorDetails(doctorByName.id)">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ doctorByName.doctorname }}</td>
+          <td>{{ doctorByName.speciality }}</td>
+          <td>{{ doctorByName.hospital_name }}</td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-danger p-1" type="button" data-toggle="collapse" data-target="#collapseExample"
+              aria-expanded="false" aria-controls="collapseExample"
+              (click)="getDoctorsByName(input.value)"> Close X
+      </button>
+    </div>
   </div>
 </div>

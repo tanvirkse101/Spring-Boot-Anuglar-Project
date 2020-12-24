@@ -11,6 +11,7 @@ import { DoctorService } from '../../../services/doctor.service';
 export class DoctorAddComponent implements OnInit {
   doctor: Doctor = new Doctor();
   submitted = false;
+  doctorID: string;
 
   constructor(private doctorService: DoctorService,
               private router: Router,
@@ -20,15 +21,13 @@ export class DoctorAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  newDoctor(): void {
-    this.submitted = false;
-    this.doctor = new Doctor();
-  }
-
   save() {
     this.doctorService
       .create(this.doctor).subscribe(data => {
         console.log(data);
+        this.doctor = data;
+        this.doctorID = this.doctor.id;
+        console.log(this.doctorID);
         this.doctor = new Doctor();
         this.doctorService.sendListUpdateAlert('Added');
         console.log(this.doctor);
@@ -43,7 +42,7 @@ export class DoctorAddComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate([ 'doctors' ]);
+    this.router.navigate([ 'doctors/details', this.doctorID ]);
   }
 
 }

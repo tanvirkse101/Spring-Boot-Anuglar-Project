@@ -47,8 +47,8 @@ export class DoctorService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: any): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(`${ baseUrl }?title=${ title }`);
+  findByName(doctorname: any): Observable<Doctor[]> {
+    return this.http.get<Doctor[]>(`${ baseUrl }/name/${ doctorname }`);
   }
 
 }

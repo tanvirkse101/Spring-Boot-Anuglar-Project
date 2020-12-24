@@ -10,8 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: [ './doctor-list.component.css' ]
 })
 export class DoctorListComponent implements OnInit, OnDestroy {
-
   doctors: Observable<Doctor[]>;
+  doctorsByName: Observable<Doctor[]>;
   subscription: Subscription;
 
   constructor(private doctorService: DoctorService,
@@ -25,7 +25,6 @@ export class DoctorListComponent implements OnInit, OnDestroy {
       (message) => {
         if (message) {
           this.reloadData();
-          console.log(message);
         }
       }
     );
@@ -38,6 +37,7 @@ export class DoctorListComponent implements OnInit, OnDestroy {
 
   reloadData() {
     this.doctors = this.doctorService.getAll();
+    console.log(this.doctors);
   }
 
   doctorDetails(id: string) {
@@ -46,5 +46,9 @@ export class DoctorListComponent implements OnInit, OnDestroy {
 
   addDoctor() {
     this.router.navigate([ 'add' ], { relativeTo: this.route });
+  }
+
+  getDoctorsByName(input: string) {
+    this.doctorsByName = this.doctorService.findByName(input);
   }
 }

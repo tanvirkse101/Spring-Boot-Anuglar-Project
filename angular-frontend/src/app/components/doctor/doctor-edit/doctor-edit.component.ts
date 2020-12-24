@@ -45,7 +45,6 @@ export class DoctorEditComponent implements OnInit {
   }
 
   list() {
-    this.router.navigate([ 'doctors' ]);
+    this.router.navigate([ 'doctors/details', this.id ]);
   }
-
 }
