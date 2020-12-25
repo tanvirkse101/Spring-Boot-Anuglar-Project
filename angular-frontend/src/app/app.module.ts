@@ -17,6 +17,10 @@ import { DoctorListComponent } from './components/doctor/doctor-list/doctor-list
 import { DoctorDetailsComponent } from './components/doctor/doctor-details/doctor-details.component';
 import { DoctorEditComponent } from './components/doctor/doctor-edit/doctor-edit.component';
 import { DoctorService } from './services/doctor.service';
+import { PatientComponent } from './components/patient/patient.component';
+import { PatientListComponent } from './components/patient/patient-list/patient-list.component';
+import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { PatientEditComponent } from './components/patient/patient-edit/patient-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,10 @@ import { DoctorService } from './services/doctor.service';
     DoctorListComponent,
     DoctorDetailsComponent,
     DoctorEditComponent,
+    PatientComponent,
+    PatientListComponent,
+    PatientDetailsComponent,
+    PatientEditComponent,
   ],
   imports: [
     RouterModule,
@@ -39,8 +47,8 @@ import { DoctorService } from './services/doctor.service';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [DoctorService],
-  bootstrap: [AppComponent]
+  providers: [ DoctorService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {
 }
