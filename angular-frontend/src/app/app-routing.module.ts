@@ -11,6 +11,7 @@ import { DoctorEditComponent } from './components/doctor/doctor-edit/doctor-edit
 import { PatientComponent } from './components/patient/patient.component';
 import { PatientEditComponent } from './components/patient/patient-edit/patient-edit.component';
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
+import { PatientAddComponent } from './components/patient/patient-add/patient-add.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'patients', component: PatientComponent, children: [
-      { path: 'add', component: PatientEditComponent },
+      { path: 'add', component: PatientAddComponent },
       { path: 'details/:id', component: PatientDetailsComponent },
       { path: 'update/:id', component: PatientEditComponent }
     ]

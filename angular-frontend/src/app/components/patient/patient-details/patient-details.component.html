@@ -1,8 +1,8 @@
 <div class="row justify-content-center">
-  <div class="card" style="width: 100%;">
+  <div class="card shadow" style="width: 100%;">
     <div class="card-body">
       <div class="row">
-        <div class="col-8"><h5 class="card-title mx-auto">Doctor Details:</h5></div>
+        <div class="col-8"><h5 class="card-title mx-auto">Patient Details:</h5></div>
         <div class="col">
           <button class="btn btn-success" (click)="updatePatient(patient.id)">Update</button>
           <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#exampleModal">Delete
@@ -72,7 +72,7 @@
       <hr>
       <div class="row">
         <div class="col-md-5"><h6>Health care provider:</h6></div>
-        <div class="">{{ patient.healthcareprovider }}</div>
+        <div class="col">{{ patient.healthcareprovider }}</div>
       </div>
       <hr>
       <div class="row">

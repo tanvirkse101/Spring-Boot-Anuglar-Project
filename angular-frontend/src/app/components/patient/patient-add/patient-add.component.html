@@ -2,11 +2,11 @@
   <div class="card-body">
     <div class="row">
       <div class="col-md-12">
-        <form (ngSubmit)="onSubmit()" #f2=ngForm>
+        <form (ngSubmit)="onSubmit()" #f3=ngForm>
           <div class="row">
             <div class="col-md-12">
-              <button type="submit" class="btn btn-primary" [disabled]="f2.invalid">Save changes</button>
-              <button type="button" class="btn btn-danger ml-2" (click)="list()">Cancel</button>
+              <button type="submit" class="btn btn-primary" [disabled]="f3.invalid">Save changes</button>
+              <button type="button" class="btn btn-danger ml-2" (click)="gotoList()">Cancel</button>
             </div>
           </div>
           <!---->
@@ -23,18 +23,9 @@
             <div class="input-group-prepend">
               <span class="input-group-text" style="width: 120px;">Date of birth</span>
             </div>
-            <label for="dob"></label><input type="text" class="form-control" id="dob" required
+            <label for="dob"></label><input type="text" placeholder="YYYY-MM-DD" class="form-control" id="dob" required
                                             [(ngModel)]="patient.dob"
                                             name="dob">
-          </div>
-          <!---->
-          <div class="input-group mt-2 mb-2">
-            <div class="input-group-prepend">
-              <span class="input-group-text" style="width: 120px;">Age</span>
-            </div>
-            <label for="age"></label><input type="number" class="form-control" id="age" required
-                                             [(ngModel)]="patient.age"
-                                             name="age">
           </div>
           <!---->
           <div class="input-group mt-2 mb-2">
@@ -82,15 +73,6 @@
           <!---->
           <div class="input-group mt-2 mb-2">
             <div class="input-group-prepend">
-              <span class="input-group-text" style="width: 120px;">Address</span>
-            </div>
-            <label for="address"></label><input type="text" class="form-control" id="address" required
-                                                   [(ngModel)]="patient.patientaddress"
-                                                   name="address">
-          </div>
-          <!---->
-          <div class="input-group mt-2 mb-2">
-            <div class="input-group-prepend">
               <span class="input-group-text" style="width: 165px;">Health insurance no</span>
             </div>
             <label for="healthinsuranceno"></label><input type="number" class="form-control" id="healthinsuranceno"
@@ -114,3 +96,4 @@
     </div>
   </div>
 </div>
+

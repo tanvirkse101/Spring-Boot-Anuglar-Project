@@ -21,6 +21,7 @@ import { PatientComponent } from './components/patient/patient.component';
 import { PatientListComponent } from './components/patient/patient-list/patient-list.component';
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
 import { PatientEditComponent } from './components/patient/patient-edit/patient-edit.component';
+import { PatientAddComponent } from './components/patient/patient-add/patient-add.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PatientEditComponent } from './components/patient/patient-edit/patient-
     PatientListComponent,
     PatientDetailsComponent,
     PatientEditComponent,
+    PatientAddComponent,
   ],
   imports: [
     RouterModule,
