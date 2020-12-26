@@ -53,8 +53,8 @@ export class PatientService {
     return this.http.get<Patient[]>(`${ baseUrl }/name/${ patientName }`);
   }
 
-  findByNameDob(patientName: any): Observable<Patient[]> {
-    return this.http.get<Patient[]>(`${ baseUrl }/name/${ patientName }`);
+  findByNameDob(namedob: any): Observable<any> {
+    return this.http.post(`${ baseUrl }/namedob`, namedob);
   }
 
 }

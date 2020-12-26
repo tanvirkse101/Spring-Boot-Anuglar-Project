@@ -23,8 +23,10 @@
     <hr>
     <button type="button" class="btn btn-primary mt-2" (click)="addPatient()"> + Add new Patient</button>
     <hr>
+    <!----->
     <div class="input-group mb-3">
-      <input #input type="text" class="form-control mr-1" placeholder="Enter patient name">
+      <label for="input"></label>
+      <input id="input" #input type="text" class="form-control mr-1" placeholder="Enter patient name">
       <div class="input-group-append">
         <button class="btn btn-secondary ml-1" type="button" data-toggle="collapse" data-target="#collapseExample"
                 aria-expanded="false" aria-controls="collapseExample"
@@ -32,6 +34,7 @@
         </button>
       </div>
     </div>
+    <!-- Results --->
     <div class="collapse" id="collapseExample">
       <table class="table table-hover mt-2">
         <thead class="thead-dark">
@@ -57,5 +60,45 @@
               (click)="getPatientsByName(input.value)"> Close X
       </button>
     </div>
+    <!-- Results --->
+    <hr>
+    <div class="input-group mb-3">
+      <label for="input1"></label>
+      <input id="input1" #input1 type="text" class="form-control mr-1" placeholder="Enter patient name">
+      <label for="input2"></label>
+      <input id="input2" #input2 type="text" class="form-control mr-1" placeholder="YYYY-MM-DD">
+      <div class="input-group-append">
+        <button class="btn btn-secondary ml-1" type="button" data-toggle="collapse" data-target="#collapseExampleNameDob"
+                aria-expanded="false" aria-controls="collapseExample"
+                (click)="getPatientByNameDob(input1.value,input2.value)">Find
+        </button>
+      </div>
+    </div>
+    <!-- Results --->
+    <div class="collapse" id="collapseExampleNameDob">
+      <table class="table table-hover mt-2">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Dob</th>
+          <th scope="col">Contact</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="cursor: pointer; "
+            (click)="patientDetails(patientByNameDob.id)">
+          <td>{{ patientByNameDob.name }}</td>
+          <td>{{ patientByNameDob.dob | date:'dd.MM.yyyy' }}</td>
+          <td>{{ patientByNameDob.contact }}</td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-danger p-1" type="button" data-toggle="collapse" data-target="#collapseExampleNameDob"
+              aria-expanded="false" aria-controls="collapseExample"
+              (click)="getPatientsByName(input.value)"> Close X
+      </button>
+    </div>
+    <hr>
+    <!-- Results --->
   </div>
 </div>

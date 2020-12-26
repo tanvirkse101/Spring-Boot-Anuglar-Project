@@ -76,7 +76,7 @@
             <option *ngFor="let doctor of doctors| async;"
                     [value]=[doctor.id]>{{ doctor.doctorname }}
             </option>
-            <option [value]="null">Not set</option>
+            <option [value]=null>Not set</option>
           </select>
           </div>
           <!---->

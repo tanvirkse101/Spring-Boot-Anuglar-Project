@@ -12,6 +12,7 @@ import { PatientService } from '../../../services/patient.service';
 export class PatientListComponent implements OnInit, OnDestroy {
   patients: Observable<Patient[]>;
   patientsByName: Observable<Patient[]>;
+  patientByNameDob: Patient = new Patient();
   subscription: Subscription;
 
   constructor(private patientService: PatientService,
@@ -50,5 +51,18 @@ export class PatientListComponent implements OnInit, OnDestroy {
 
   getPatientsByName(input: string) {
     this.patientsByName = this.patientService.findByName(input);
+  }
+
+  getPatientByNameDob(patientName: string, patientDob: string) {
+    const patientNameDob = {
+      name: patientName,
+      dob: new Date(patientDob)
+    };
+    this.patientService.findByNameDob(patientNameDob).subscribe(
+      namedob => {
+        this.patientByNameDob = namedob;
+        console.log(this.patientByNameDob);
+      }
+    );
   }
 }
