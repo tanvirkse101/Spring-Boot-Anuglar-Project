@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-md-12">
               <button type="submit" class="btn btn-primary" [disabled]="f3.invalid">Save changes</button>
-              <button type="button" class="btn btn-danger ml-2" (click)="gotoList()">Cancel</button>
+              <button type="button" class="btn btn-danger ml-2" (click)="cancelAdd()">Cancel</button>
             </div>
           </div>
           <!---->
@@ -16,6 +16,7 @@
             </div>
             <label for="name"></label><input type="text" class="form-control" id="name" required
                                              [(ngModel)]="patient.name"
+                                             placeholder="Enter patient's name"
                                              name="name">
           </div>
           <!---->
@@ -45,6 +46,7 @@
             </div>
             <label for="occupation"></label><input type="text" class="form-control" id="occupation" required
                                                    [(ngModel)]="patient.occupation"
+                                                   placeholder="Enter patient's occupation"
                                                    name="occupation">
           </div>
           <!---->
@@ -55,6 +57,7 @@
             <label for="contact"></label><input type="number" class="form-control" id="contact"
                                                 required
                                                 [(ngModel)]="patient.contact"
+                                                placeholder="Enter patient's contact number "
                                                 name="contact">
           </div>
           <!---->
@@ -73,11 +76,22 @@
           <!---->
           <div class="input-group mt-2 mb-2">
             <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 120px;">Address</span>
+            </div>
+            <label for="address"></label><input type="text" class="form-control" id="address" required
+                                                [(ngModel)]="patient.patientaddress"
+                                                placeholder="Enter patient's home address "
+                                                name="address">
+          </div>
+          <!---->
+          <div class="input-group mt-2 mb-2">
+            <div class="input-group-prepend">
               <span class="input-group-text" style="width: 165px;">Health insurance no</span>
             </div>
             <label for="healthinsuranceno"></label><input type="number" class="form-control" id="healthinsuranceno"
                                                           required
                                                           [(ngModel)]="patient.healthinsuranceno"
+                                                          placeholder="Enter patient's insurance number "
                                                           name="healthinsuranceno">
           </div>
           <!---->
@@ -88,6 +102,7 @@
             <label for="healthcareprovider"></label><input type="text" class="form-control" id="healthcareprovider"
                                                            required
                                                            [(ngModel)]="patient.healthcareprovider"
+                                                           placeholder="Enter patient's Health care provider "
                                                            name="healthcareprovider">
           </div>
           <!---->

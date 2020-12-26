@@ -45,4 +45,8 @@ export class DoctorAddComponent implements OnInit {
     this.router.navigate([ 'doctors/details', this.doctorID ]);
   }
 
+  cancelAdd() {
+    this.router.navigate([ 'doctors' ]);
+  }
+
 }

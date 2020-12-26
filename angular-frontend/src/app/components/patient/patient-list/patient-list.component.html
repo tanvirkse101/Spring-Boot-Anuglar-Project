@@ -56,8 +56,7 @@
         </tbody>
       </table>
       <button class="btn btn-danger p-1" type="button" data-toggle="collapse" data-target="#collapseExample"
-              aria-expanded="false" aria-controls="collapseExample"
-              (click)="getPatientsByName(input.value)"> Close X
+              aria-expanded="false" aria-controls="collapseExample"> Close X
       </button>
     </div>
     <!-- Results --->
@@ -68,7 +67,8 @@
       <label for="input2"></label>
       <input id="input2" #input2 type="text" class="form-control mr-1" placeholder="YYYY-MM-DD">
       <div class="input-group-append">
-        <button class="btn btn-secondary ml-1" type="button" data-toggle="collapse" data-target="#collapseExampleNameDob"
+        <button class="btn btn-secondary ml-1" type="button" data-toggle="collapse"
+                data-target="#collapseExampleNameDob"
                 aria-expanded="false" aria-controls="collapseExample"
                 (click)="getPatientByNameDob(input1.value,input2.value)">Find
         </button>
@@ -94,8 +94,7 @@
         </tbody>
       </table>
       <button class="btn btn-danger p-1" type="button" data-toggle="collapse" data-target="#collapseExampleNameDob"
-              aria-expanded="false" aria-controls="collapseExample"
-              (click)="getPatientsByName(input.value)"> Close X
+              aria-expanded="false" aria-controls="collapseExample"> Close X
       </button>
     </div>
     <hr>

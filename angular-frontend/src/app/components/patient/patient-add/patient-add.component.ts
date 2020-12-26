@@ -49,4 +49,8 @@ export class PatientAddComponent implements OnInit {
     this.router.navigate([ 'patients/details', this.patientID ]);
   }
 
+  cancelAdd() {
+    this.router.navigate([ 'patients' ]);
+  }
+
 }
