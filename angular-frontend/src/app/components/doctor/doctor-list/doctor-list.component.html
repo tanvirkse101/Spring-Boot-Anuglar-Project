@@ -1,6 +1,6 @@
 <div class="card shadow">
   <div class="card-body">
-    <h4>Doctor List:</h4>
+    <h4><i class="fas fa-users"></i>  Doctor List:</h4>
     <table class="table table-hover">
       <thead class="thead-dark">
       <tr>
@@ -21,20 +21,20 @@
       </tbody>
     </table>
     <hr>
-    <button type="button" class="btn btn-primary mt-2" (click)="addDoctor()"> + Add new doctor</button>
+    <button type="button" class="btn btn-primary mt-2" (click)="addDoctor()"> <i class="fas fa-plus"></i>  Add new doctor</button>
     <hr>
-    <div class="input-group mt-2">
-      <div class="input-group-prepend">
-        <label>
-          <input #input type="text" class="form-control mr-1" placeholder="Enter doctor name">
-        </label>
-        <span>
-          <button class="btn btn-secondary ml-2" type="button" data-toggle="collapse" data-target="#collapseExample"
-                  aria-expanded="false" aria-controls="collapseExample"
-                  (click)="getDoctorsByName(input.value)">Find</button>
-        </span>
+    <!--Test-->
+    <div class="input-group mb-3">
+      <label for="input"></label>
+      <input id="input" #input type="text" class="form-control mr-1" placeholder="Enter doctor name">
+      <div class="input-group-append">
+        <button class="btn btn-secondary ml-1" type="button" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample"
+                (click)="getDoctorsByName(input.value)"><i class="fas fa-search"></i> Find
+        </button>
       </div>
     </div>
+    <!--Test-->
     <div class="collapse" id="collapseExample">
       <table class="table table-hover mt-2">
         <thead class="thead-dark">
@@ -56,8 +56,7 @@
         </tbody>
       </table>
       <button class="btn btn-danger p-1" type="button" data-toggle="collapse" data-target="#collapseExample"
-              aria-expanded="false" aria-controls="collapseExample"
-              (click)="getDoctorsByName(input.value)"> Close X
+              aria-expanded="false" aria-controls="collapseExample"> Close <i class="fas fa-times-circle"></i>
       </button>
     </div>
   </div>

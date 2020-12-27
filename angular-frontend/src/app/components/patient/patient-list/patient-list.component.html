@@ -1,6 +1,6 @@
 <div class="card shadow">
   <div class="card-body">
-    <h4>Patient List:</h4>
+    <h4><i class="fas fa-users"></i>  Patient List:</h4>
     <table class="table table-hover">
       <thead class="thead-dark">
       <tr>
@@ -21,7 +21,7 @@
       </tbody>
     </table>
     <hr>
-    <button type="button" class="btn btn-primary mt-2" (click)="addPatient()"> + Add new Patient</button>
+    <button type="button" class="btn btn-primary mt-2" (click)="addPatient()"> <i class="fas fa-plus"></i>  Add new Patient</button>
     <hr>
     <!----->
     <div class="input-group mb-3">
@@ -30,7 +30,7 @@
       <div class="input-group-append">
         <button class="btn btn-secondary ml-1" type="button" data-toggle="collapse" data-target="#collapseExample"
                 aria-expanded="false" aria-controls="collapseExample"
-                (click)="getPatientsByName(input.value)">Find
+                (click)="getPatientsByName(input.value)"><i class="fas fa-search"></i> Find
         </button>
       </div>
     </div>
@@ -56,7 +56,7 @@
         </tbody>
       </table>
       <button class="btn btn-danger p-1" type="button" data-toggle="collapse" data-target="#collapseExample"
-              aria-expanded="false" aria-controls="collapseExample"> Close X
+              aria-expanded="false" aria-controls="collapseExample"> Close <i class="fas fa-times-circle"></i>
       </button>
     </div>
     <!-- Results --->
@@ -70,7 +70,7 @@
         <button class="btn btn-secondary ml-1" type="button" data-toggle="collapse"
                 data-target="#collapseExampleNameDob"
                 aria-expanded="false" aria-controls="collapseExample"
-                (click)="getPatientByNameDob(input1.value,input2.value)">Find
+                (click)="getPatientByNameDob(input1.value,input2.value)"><i class="fas fa-search"></i> Find
         </button>
       </div>
     </div>
@@ -94,7 +94,7 @@
         </tbody>
       </table>
       <button class="btn btn-danger p-1" type="button" data-toggle="collapse" data-target="#collapseExampleNameDob"
-              aria-expanded="false" aria-controls="collapseExample"> Close X
+              aria-expanded="false" aria-controls="collapseExample"> Close <i class="fas fa-times-circle"></i>
       </button>
     </div>
     <hr>
