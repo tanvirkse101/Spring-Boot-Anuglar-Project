@@ -2,10 +2,12 @@
   <div class="card shadow" style="width: 100%;">
     <div class="card-body">
       <div class="row">
-        <div class="col-8"><h5 class="card-title mx-auto">Patient Details:</h5></div>
+        <div class="col-7"><h5 class="card-title mx-auto">Patient Details:</h5></div>
         <div class="col">
-          <button class="btn btn-success" (click)="updatePatient(patient.id)">Update</button>
-          <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#exampleModal">Delete
+          <button class="btn btn-success" (click)="updatePatient(patient.id)"><i class="fas fa-user-edit"></i> Update
+          </button>
+          <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#exampleModal"><i
+            class="fas fa-trash"></i> Delete
           </button>
           <!-- Delete Confirmation Modal-->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -29,9 +31,11 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deletePatient(patient.id)">
-                    Delete
+                    <i class="fas fa-trash"></i> Delete
                   </button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="far fa-times-circle"></i>
+                    Close
+                  </button>
                 </div>
               </div>
             </div>

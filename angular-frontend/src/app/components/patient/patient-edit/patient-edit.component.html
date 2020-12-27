@@ -5,8 +5,11 @@
         <form (ngSubmit)="onSubmit()" #f2=ngForm>
           <div class="row">
             <div class="col-md-12">
-              <button type="submit" class="btn btn-primary" [disabled]="f2.invalid">Save changes</button>
-              <button type="button" class="btn btn-danger ml-2" (click)="list()">Cancel</button>
+              <button type="submit" class="btn btn-primary" [disabled]="f2.invalid"><i class="fas fa-save"></i> Save
+                changes
+              </button>
+              <button type="button" class="btn btn-danger ml-2" (click)="list()">Cancel <i
+                class="far fa-times-circle"></i></button>
             </div>
           </div>
           <!---->
@@ -33,8 +36,8 @@
               <span class="input-group-text" style="width: 120px;">Age</span>
             </div>
             <label for="age"></label><input type="number" class="form-control" id="age" required
-                                             [(ngModel)]="patient.age"
-                                             name="age">
+                                            [(ngModel)]="patient.age"
+                                            name="age">
           </div>
           <!---->
           <div class="input-group mt-2 mb-2">
@@ -61,7 +64,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" style="width: 120px;">Contact no</span>
             </div>
-            <label for="contact"></label><input type="number" class="form-control" id="contact"
+            <label for="contact"></label><input type="tel" class="form-control" id="contact"
                                                 required
                                                 [(ngModel)]="patient.contact"
                                                 name="contact">
@@ -85,8 +88,8 @@
               <span class="input-group-text" style="width: 120px;">Address</span>
             </div>
             <label for="address"></label><input type="text" class="form-control" id="address" required
-                                                   [(ngModel)]="patient.patientaddress"
-                                                   name="address">
+                                                [(ngModel)]="patient.patientaddress"
+                                                name="address">
           </div>
           <!---->
           <div class="input-group mt-2 mb-2">

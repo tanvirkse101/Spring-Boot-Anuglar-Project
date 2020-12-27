@@ -3,10 +3,12 @@
     <img class="card-img-top p-2" [src]="doctor.profile_picture" alt="Doctor image">
     <div class="card-body">
       <div class="row">
-        <div class="col-8"><h5 class="card-title mx-auto">Doctor Details:</h5></div>
+        <div class="col-7"><h5 class="card-title mx-auto">Doctor Details:</h5></div>
         <div class="col">
-          <button class="btn btn-success" (click)="updateDoctor(doctor.id)">Update</button>
-          <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#exampleModal">Delete
+          <button class="btn btn-success" (click)="updateDoctor(doctor.id)"><i class="fas fa-user-edit"></i> Update
+          </button>
+          <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#exampleModal"><i
+            class="fas fa-trash"></i> Delete
           </button>
           <!-- Delete Confirmation Modal-->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -28,10 +30,12 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteDoctor(doctor.id)">
-                    Delete
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteDoctor(doctor.id)"><i
+                    class="fas fa-trash"></i> Delete
                   </button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="far fa-times-circle"></i>
+                    Close
+                  </button>
                 </div>
               </div>
             </div>

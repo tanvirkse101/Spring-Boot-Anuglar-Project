@@ -49,10 +49,12 @@ export class PatientListComponent implements OnInit, OnDestroy {
     this.router.navigate([ 'add' ], { relativeTo: this.route });
   }
 
+  // Pass name from the form and get the patient object from patient service
   getPatientsByName(input: string) {
     this.patientsByName = this.patientService.findByName(input);
   }
 
+  // Pass name and date of birth from the form and get the patient object from patient service
   getPatientByNameDob(patientName: string, patientDob: string) {
     const patientNameDob = {
       name: patientName,

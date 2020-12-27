@@ -12,10 +12,12 @@ import { PatientComponent } from './components/patient/patient.component';
 import { PatientEditComponent } from './components/patient/patient-edit/patient-edit.component';
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
 import { PatientAddComponent } from './components/patient/patient-add/patient-add.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tutorial', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'tutorials', component: TutorialListComponent },
   { path: 'details/:id', component: TutorialDetailsComponent },
   { path: 'create', component: CreateTutorialComponent },
