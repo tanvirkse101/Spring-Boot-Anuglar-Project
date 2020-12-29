@@ -47,5 +47,4 @@ export class PatientDetailsComponent implements OnInit {
   updatePatient(id: string) {
     this.router.navigate([ 'patients/update', id ]);
   }
-
 }
