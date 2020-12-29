@@ -13,6 +13,10 @@ import { PatientEditComponent } from './components/patient/patient-edit/patient-
 import { PatientDetailsComponent } from './components/patient/patient-details/patient-details.component';
 import { PatientAddComponent } from './components/patient/patient-add/patient-add.component';
 import { HomeComponent } from './components/home/home.component';
+import { ReportComponent } from './components/report/report.component';
+import { ReportAddComponent } from './components/report/report-add/report-add.component';
+import { ReportDetailsComponent } from './components/report/report-details/report-details.component';
+import { ReportEditComponent } from './components/report/report-edit/report-edit.component';
 
 
 const routes: Routes = [
@@ -34,6 +38,14 @@ const routes: Routes = [
       { path: 'add', component: PatientAddComponent },
       { path: 'details/:id', component: PatientDetailsComponent },
       { path: 'update/:id', component: PatientEditComponent }
+    ]
+  },
+  {
+    path: 'reports', component: ReportComponent, children: [
+      { path: 'add', component: ReportAddComponent },
+      { path: 'add/:id', component: ReportAddComponent },
+      { path: 'details/:id', component: ReportDetailsComponent },
+      { path: 'update/:id', component: ReportEditComponent }
     ]
   }
 ];

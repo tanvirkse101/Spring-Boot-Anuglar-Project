@@ -23,6 +23,13 @@ import { PatientDetailsComponent } from './components/patient/patient-details/pa
 import { PatientEditComponent } from './components/patient/patient-edit/patient-edit.component';
 import { PatientAddComponent } from './components/patient/patient-add/patient-add.component';
 import { HomeComponent } from './components/home/home.component';
+import { ReportComponent } from './components/report/report.component';
+import { ReportListComponent } from './components/report/report-list/report-list.component';
+import { ReportDetailsComponent } from './components/report/report-details/report-details.component';
+import { ReportEditComponent } from './components/report/report-edit/report-edit.component';
+import { ReportAddComponent } from './components/report/report-add/report-add.component';
+import { PatientService } from './services/patient.service';
+import { ReportService } from './services/report.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +50,11 @@ import { HomeComponent } from './components/home/home.component';
     PatientEditComponent,
     PatientAddComponent,
     HomeComponent,
+    ReportComponent,
+    ReportListComponent,
+    ReportDetailsComponent,
+    ReportEditComponent,
+    ReportAddComponent,
   ],
   imports: [
     RouterModule,
@@ -51,7 +63,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [ DoctorService ],
+  providers: [ DoctorService, PatientService, ReportService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
