@@ -9,7 +9,7 @@ import { TutorialDetailsComponent } from './components/tutorial/tutorial-details
 import { CreateTutorialComponent } from './components/tutorial/create-tutorial/create-tutorial.component';
 import { UpdateTutorialComponent } from './components/tutorial/update-tutorial/update-tutorial.component';
 import { TutorialListComponent } from './components/tutorial/tutorial-list/tutorial-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { DoctorAddComponent } from './components/doctor/doctor-add/doctor-add.component';
@@ -56,13 +56,14 @@ import { ReportService } from './services/report.service';
     ReportEditComponent,
     ReportAddComponent,
   ],
-  imports: [
-    RouterModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-  ],
+    imports: [
+        RouterModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
   providers: [ DoctorService, PatientService, ReportService ],
   bootstrap: [ AppComponent ]
 })

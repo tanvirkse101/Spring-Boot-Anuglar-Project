@@ -15,10 +15,10 @@ import { ReportService } from '../../../services/report.service';
 export class ReportDetailsComponent implements OnInit {
 
   reportId: string;
-  doctor: Doctor;
-  followUpDoctor: Doctor;
-  patient: Patient;
-  report: Report;
+  doctor: Doctor = new Doctor();
+  followUpDoctor: Doctor = new Doctor();
+  patient: Patient = new Patient();
+  report: Report = new Report();
 
   constructor(private route: ActivatedRoute, private router: Router,
               private doctorService: DoctorService,

@@ -28,7 +28,7 @@ export class ReportListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.reloadData();
     console.log(this.reportByNameDob);
-    this.subscription = this.patientService.getListUpdateAlert().subscribe(
+    this.subscription = this.reportService.getListUpdateAlert().subscribe(
       (reportMessage) => {
         if (reportMessage) {
           this.reloadData();

@@ -1,1 +1,150 @@
-<p>report-add works!</p>
+<div class="card shadow">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+          <!-- Buttons --->
+          <div class="row">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-danger ml-2" (click)="cancelAdd()">Cancel</button>
+            </div>
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">Patient Id</span>
+            </div>
+            <select formControlName="patientid" class="form-control">
+              <option *ngFor="let patient of patients| async;"
+                      [value]=[patient.id]>{{ patient.name }} [ {{ patient.dob | date:'dd.MM.yyyy' }} ]
+              </option>
+              <option [value]="null">Not set</option>
+            </select>
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">Doctor Id</span>
+            </div>
+            <select formControlName="doctorid" class="form-control">
+              <option *ngFor="let doctor of doctors| async;"
+                      [value]=[doctor.id]>{{ doctor.doctorname }} [ {{ doctor.hospital_name }} ]
+              </option>
+              <option [value]="null">Not set</option>
+            </select>
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">Blood pressure</span>
+            </div>
+            <input formControlName="bloodpressure" type="number" class="form-control">
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">Pulse rate</span>
+            </div>
+            <input formControlName="pulserate" type="number" class="form-control">
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">Weight</span>
+            </div>
+            <input formControlName="weight" type="number" class="form-control">
+          </div>
+
+          <!-- Input Fields --->
+
+          <div formArrayName="allergies">
+            <div *ngFor="let allergy of allergies.controls; let i = index" class="input-group mt-3 mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" style="width: 145px;">Allergies</span>
+                <button type="button" class="btn btn-primary" (click)="addAllergies()">
+                  <i class="fas fa-plus"></i></button>
+              </div>
+              <input formControlName="{{ i }}" type="text" class="form-control">
+              <button type="button" class="btn btn-primary" (click)="removeAllergies(i)">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Input Fields --->
+
+          <div formArrayName="disabilities">
+            <div *ngFor="let disability of disabilities.controls; let i = index" class="input-group mt-3 mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" style="width: 145px;">Disabilities</span>
+                <button type="button" class="btn btn-primary" (click)="addDisabilities()">
+                  <i class="fas fa-plus"></i></button>
+              </div>
+              <input formControlName="{{ i }}" type="text" class="form-control">
+              <button type="button" class="btn btn-primary" (click)="removeDisabilities(i)">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">Medicine</span>
+            </div>
+            <input formControlName="medicines" type="text" class="form-control">
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">Diet</span>
+            </div>
+            <input formControlName="diets" type="text" class="form-control">
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">History</span>
+            </div>
+            <input formControlName="patienthistory" type="text" class="form-control">
+          </div>
+
+          <!-- Input Fields --->
+
+          <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width: 145px;">Follow up doctor</span>
+            </div>
+            <select formControlName="followupdoctorid" class="form-control">
+              <option *ngFor="let doctor of doctors| async;"
+                      [value]=[doctor.id]>{{ doctor.doctorname }} [ {{ doctor.hospital_name }} ]
+              </option>
+              <option [value]="null">Not set</option>
+            </select>
+          </div>
+
+          <!-- Input Fields --->
+
+        </form>
+<!--        <p>{{ reportForm.valid }}</p>-->
+<!--        <p>{{ reportForm.value | json }}</p>-->
+      </div>
+    </div>
+  </div>
+</div>
