@@ -47,4 +47,8 @@ export class PatientDetailsComponent implements OnInit {
   updatePatient(id: string) {
     this.router.navigate([ 'patients/update', id ]);
   }
+
+  generateReport(id: string) {
+    this.router.navigate([ 'reports/add', id ]);
+  }
 }

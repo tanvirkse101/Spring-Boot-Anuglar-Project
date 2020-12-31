@@ -27,7 +27,6 @@ export class ReportListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.reloadData();
-    console.log(this.reportByNameDob);
     this.subscription = this.reportService.getListUpdateAlert().subscribe(
       (reportMessage) => {
         if (reportMessage) {
@@ -70,7 +69,6 @@ export class ReportListComponent implements OnInit, OnDestroy {
     this.reportService.findReportByNameDob(patientNameDob).subscribe(
       (namedob: Report) => {
         this.reportByNameDob = namedob;
-        console.log(this.reportByNameDob);
       }
     );
   }
