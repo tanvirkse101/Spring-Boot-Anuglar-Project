@@ -21,8 +21,7 @@ export class ReportAddComponent implements OnInit {
   patientID: string;
   patients: Observable<Patient[]>;
   doctors: Observable<Doctor[]>;
-  // patient: Patient;
-  // doctor: Doctor;
+  patient: Patient;
 
   // Build Report Form
   reportForm = this.fb.group({
@@ -51,7 +50,7 @@ export class ReportAddComponent implements OnInit {
               private fb: FormBuilder) {
   }
 
-  // Form array functions
+  // Form array get functions
 
   get allergies() {
     return this.reportForm.get('allergies') as FormArray;
@@ -68,6 +67,8 @@ export class ReportAddComponent implements OnInit {
   get diets() {
     return this.reportForm.get('diets') as FormArray;
   }
+
+  // Form array add/remove functions
 
   addAllergies() {
     this.allergies.push(this.fb.control(''));
@@ -101,30 +102,26 @@ export class ReportAddComponent implements OnInit {
     this.diets.removeAt(i);
   }
 
-  // Form array functions
   ngOnInit() {
     this.doctors = this.doctorService.getAll();
     this.patients = this.patientService.getAll();
     this.patientID = this.route.snapshot.params['id'.toString()];
-    // console.log(this.patientID);
-    // this.patient = new Patient();
-    // this.doctor = new Doctor();
-    // try {
-    //   this.patientService.get(this.patientID).subscribe(
-    //     patientData => {
-    //       this.patient = patientData;
-    //       console.log(this.patient);
-    //       this.doctorService.get(this.patient.doctorid).subscribe(
-    //         doctorData => {
-    //           this.doctor = doctorData;
-    //           console.log(this.doctor);
-    //         }
-    //       );
-    //     }
-    //   );
-    // } catch ( e ) {
-    //   console.log('Failed to load patient data');
-    // }
+    console.log(this.patientID);
+    this.patient = new Patient();
+    try {
+      this.patientService.get(this.patientID).subscribe(
+        patientData => {
+          this.patient = patientData;
+          this.reportForm.patchValue({
+            patientid: this.patient.id,
+            doctorid: this.patient.doctorid
+          });
+          console.log(this.patient);
+        }
+      );
+    } catch ( e ) {
+      console.log('Failed to load patient data');
+    }
   }
 
   save() {

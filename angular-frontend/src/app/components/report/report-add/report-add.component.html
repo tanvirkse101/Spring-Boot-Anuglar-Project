@@ -90,6 +90,7 @@
           </div>
 
           <!-- Add Buttons -->
+          
           <div class="col btn-group">
 
             <button (click)="addAllergies()" type="button" class="btn btn-dark m-1">Allergy<i
@@ -119,7 +120,7 @@
                 <span class="input-group-text" style="width: 145px;">Allergies</span>
               </div>
               <input formControlName="{{ i }}" type="text" class="form-control">
-              <button type="button" class="btn btn-primary" (click)="removeAllergies(i)">
+              <button type="button" class="btn btn-secondary" (click)="removeAllergies(i)">
                 <i class="fas fa-times"></i>
               </button>
             </div>
@@ -133,7 +134,7 @@
                 <span class="input-group-text" style="width: 145px;">Disabilities</span>
               </div>
               <input formControlName="{{ i }}" type="text" class="form-control">
-              <button type="button" class="btn btn-primary" (click)="removeDisabilities(i)">
+              <button type="button" class="btn btn-secondary" (click)="removeDisabilities(i)">
                 <i class="fas fa-times"></i>
               </button>
             </div>
@@ -148,7 +149,7 @@
                 <input placeholder="Medicine Name" formControlName="drugname" type="text" class="form-control">
                 <input placeholder="Unit" formControlName="unit" type="number" class="form-control">
                 <input placeholder="Dosage" formControlName="dosage" type="number" class="form-control">
-                <button type="button" class="btn btn-primary" (click)="removeMedicines(i)">
+                <button type="button" class="btn btn-secondary" (click)="removeMedicines(i)">
                   <i class="fas fa-times"></i>
                 </button>
               </div>
@@ -163,7 +164,7 @@
               <div formGroupName="{{ i }}" class="input-group">
                 <input placeholder="Diet name" formControlName="dietname" type="text" class="form-control">
                 <input placeholder="Description" formControlName="description" type="text" class="form-control">
-                <button type="button" class="btn btn-primary" (click)="removeDiets(i)">
+                <button type="button" class="btn btn-secondary" (click)="removeDiets(i)">
                   <i class="fas fa-times"></i>
                 </button>
               </div>
@@ -173,8 +174,6 @@
           <!-- Input Fields --->
 
         </form>
-        <!--        <p>{{ reportForm.valid }}</p>-->
-        <!--        <p>{{ reportForm.value | json }}</p>-->
       </div>
     </div>
   </div>

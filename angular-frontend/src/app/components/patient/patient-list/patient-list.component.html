@@ -16,7 +16,7 @@
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ patient.name }}</td>
         <td>{{ patient.dob | date:'dd.MM.yyyy' }}</td>
-        <td>{{ patient.contact }}</td>
+        <td>0{{ patient.contact }}</td>
       </tr>
       </tbody>
     </table>
@@ -51,7 +51,7 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ patientByName.name }}</td>
           <td>{{ patientByName.dob | date:'dd.MM.yyyy' }}</td>
-          <td>{{ patientByName.contact }}</td>
+          <td>0{{ patientByName.contact }}</td>
         </tr>
         </tbody>
       </table>
@@ -89,7 +89,7 @@
             (click)="patientDetails(patientByNameDob.id)">
           <td>{{ patientByNameDob.name }}</td>
           <td>{{ patientByNameDob.dob | date:'dd.MM.yyyy' }}</td>
-          <td>{{ patientByNameDob.contact }}</td>
+          <td>0{{ patientByNameDob.contact }}</td>
         </tr>
         </tbody>
       </table>

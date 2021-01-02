@@ -28,7 +28,7 @@
                   <p>
                     Patient name: <b>{{ patient.name }}</b><br>
                     Date of Birth: <b>{{ patient.dob | date:'dd.MM.yyyy' }}</b><br>
-                    Contact: <b>{{ patient.contact }}</b>
+                    Contact: <b>+880 {{ patient.contact }}</b>
                   </p>
 
                 </div>
@@ -89,12 +89,12 @@
       <hr>
       <div class="row">
         <div class="col-md-5"><h6>Contact:</h6></div>
-        <div class="col">{{ patient.contact }}</div>
+        <div class="col">+880 {{ patient.contact }}</div>
       </div>
       <hr>
       <div class="row">
-        <div class="col-md-5"><h6><i>Assigned doctor id:</i></h6></div>
-        <div class="col"><i>{{ patient.doctorid }}</i></div>
+        <div class="col-md-5"><h6>Assigned doctor id:</h6></div>
+        <div class="col">{{ doctor.doctorname }} ( {{ doctor.hospital_name }} )</div>
       </div>
       <hr>
       <div class="row">

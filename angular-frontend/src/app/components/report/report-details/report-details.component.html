@@ -78,22 +78,22 @@
       <div class="row">
         <div class="col-md-5"><h6>Allergies:</h6></div>
         <div class="col">
-          <p *ngFor="let allergy of report.allergies">* {{ allergy }}</p>
+          <p *ngFor="let allergy of report.allergies"> {{ allergy }}</p>
         </div>
       </div>
       <hr>
       <div class="row">
         <div class="col-md-5"><h6>Disabilities:</h6></div>
         <div class="col">
-          <p *ngFor="let disability of report.disabilities">* {{ disability }}</p>
+          <p *ngFor="let disability of report.disabilities"> {{ disability }}</p>
         </div>
       </div>
       <hr>
-      <div class="row" >
+      <div class="row">
         <div class="col-md-5"><h6>Prescribed Medicine:</h6></div>
         <div class="col">
           <p *ngFor="let medicine of report.medicines; let i = index">
-            Medicine no:  {{ i + 1 }}<br>
+            <b>Medicine no:  {{ i + 1 }}</b><br>
             Drug name: {{ medicine.drugname }}<br>
             Unit: {{ medicine.unit }}<br>
             Dosage: {{ medicine.dosage }}<br>
@@ -105,7 +105,7 @@
         <div class="col-md-5"><h6>Diet</h6></div>
         <div class="col">
           <p *ngFor="let diet of report.diets">
-            Diet Name: {{ diet.dietname }}<br>
+            <b>Diet Name: </b>{{ diet.dietname }}<br>
             Description: {{ diet.description }}<br>
           </p>
         </div>

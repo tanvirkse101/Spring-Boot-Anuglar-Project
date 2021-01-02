@@ -16,7 +16,7 @@
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ getPatientName(report.patientid) }}</td>
         <td>{{ getPatientDob(report.patientid) | date:'dd.MM.yyyy' }}</td>
-        <td>{{ getPatientContact(report.patientid) }}</td>
+        <td>0{{ getPatientContact(report.patientid) }}</td>
       </tr>
       </tbody>
     </table>
@@ -52,7 +52,7 @@
             (click)="reportDetails(reportByNameDob.id)">
           <td>{{ getPatientName(reportByNameDob.patientid) }}</td>
           <td>{{ getPatientDob(reportByNameDob.patientid) | date:'dd.MM.yyyy' }}</td>
-          <td>{{ getPatientContact(reportByNameDob.patientid) }}</td>
+          <td>0{{ getPatientContact(reportByNameDob.patientid) }}</td>
         </tr>
         </tbody>
       </table>
