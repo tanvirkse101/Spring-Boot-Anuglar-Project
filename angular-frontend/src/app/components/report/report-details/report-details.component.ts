@@ -72,4 +72,7 @@ export class ReportDetailsComponent implements OnInit {
   updateReport(id: string) {
     this.router.navigate([ 'reports/update', id ]);
   }
+  generatePrescription(id: string) {
+    this.router.navigate([ 'prescriptions', id ]);
+  }
 }

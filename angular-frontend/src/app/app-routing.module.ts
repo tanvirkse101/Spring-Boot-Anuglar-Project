@@ -17,6 +17,7 @@ import { ReportComponent } from './components/report/report.component';
 import { ReportAddComponent } from './components/report/report-add/report-add.component';
 import { ReportDetailsComponent } from './components/report/report-details/report-details.component';
 import { ReportEditComponent } from './components/report/report-edit/report-edit.component';
+import { PrescriptionComponent } from './components/prescription/prescription.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'details/:id', component: TutorialDetailsComponent },
   { path: 'create', component: CreateTutorialComponent },
   { path: 'update/:id', component: UpdateTutorialComponent },
+  { path: 'prescriptions/:id', component: PrescriptionComponent },
   {
     path: 'doctors', component: DoctorComponent, children: [
       { path: 'add', component: DoctorAddComponent },

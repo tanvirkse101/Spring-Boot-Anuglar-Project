@@ -30,6 +30,7 @@ import { ReportEditComponent } from './components/report/report-edit/report-edit
 import { ReportAddComponent } from './components/report/report-add/report-add.component';
 import { PatientService } from './services/patient.service';
 import { ReportService } from './services/report.service';
+import { PrescriptionComponent } from './components/prescription/prescription.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ReportService } from './services/report.service';
     ReportDetailsComponent,
     ReportEditComponent,
     ReportAddComponent,
+    PrescriptionComponent,
   ],
     imports: [
         RouterModule,
