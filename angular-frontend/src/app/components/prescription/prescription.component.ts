@@ -9,6 +9,7 @@ import { Report } from '../../classes/report';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
+// noinspection JSPotentiallyInvalidConstructorUsage
 @Component({
   selector: 'app-prescription',
   templateUrl: './prescription.component.html',
@@ -69,15 +70,17 @@ export class PrescriptionComponent implements OnInit {
   public downloadPDF() {
     const data = document.getElementById('pdf');
     html2canvas(data).then(canvas => {
-      // Few necessary setting options
-      const imgWidth = 208;
-      // const pageHeight = 295;
+      // Dimensions
+
+      const imgWidth = 250;
+      const pageHeight = 275;
       const imgHeight = canvas.height * imgWidth / canvas.width;
-      // const heightLeft = imgHeight;
+      const heightLeft = imgHeight;
 
       const contentDataURL = canvas.toDataURL('image/png');
       const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
       const position = 0;
+
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
       pdf.save('prescription.pdf'); // Generated PDF
     });

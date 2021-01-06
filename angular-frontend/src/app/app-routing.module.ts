@@ -49,6 +49,9 @@ const routes: Routes = [
       { path: 'details/:id', component: ReportDetailsComponent },
       { path: 'update/:id', component: ReportEditComponent }
     ]
+  },
+  {
+    path: '**', pathMatch: 'full', component: HomeComponent
   }
 ];
 

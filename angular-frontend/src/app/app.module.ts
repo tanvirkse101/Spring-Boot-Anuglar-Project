@@ -31,6 +31,7 @@ import { ReportAddComponent } from './components/report/report-add/report-add.co
 import { PatientService } from './services/patient.service';
 import { ReportService } from './services/report.service';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { PrescriptionComponent } from './components/prescription/prescription.co
         FormsModule,
         ReactiveFormsModule,
     ],
-  providers: [ DoctorService, PatientService, ReportService ],
+  providers: [ DoctorService, PatientService, ReportService, DatePipe ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

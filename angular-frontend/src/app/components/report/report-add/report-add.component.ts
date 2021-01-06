@@ -106,21 +106,22 @@ export class ReportAddComponent implements OnInit {
     this.doctors = this.doctorService.getAll();
     this.patients = this.patientService.getAll();
     this.patientID = this.route.snapshot.params['id'.toString()];
-    console.log(this.patientID);
     this.patient = new Patient();
-    try {
-      this.patientService.get(this.patientID).subscribe(
-        patientData => {
-          this.patient = patientData;
-          this.reportForm.patchValue({
-            patientid: this.patient.id,
-            doctorid: this.patient.doctorid
-          });
-          console.log(this.patient);
-        }
-      );
-    } catch ( e ) {
-      console.log('Failed to load patient data');
+    if (this.patientID) {
+      try {
+        this.patientService.get(this.patientID).subscribe(
+          patientData => {
+            this.patient = patientData;
+            this.reportForm.patchValue({
+              patientid: this.patient.id,
+              doctorid: this.patient.doctorid
+            });
+            console.log(this.patient);
+          }
+        );
+      } catch ( e ) {
+        console.log('Failed to load patient data');
+      }
     }
   }
 
