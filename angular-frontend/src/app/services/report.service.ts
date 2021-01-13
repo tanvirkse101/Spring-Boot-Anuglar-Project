@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Report } from '../classes/report';
-import { Diet } from '../classes/diet';
 
 const baseUrl = 'http://localhost:8080/api/reports';
 

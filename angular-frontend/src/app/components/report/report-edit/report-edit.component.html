@@ -15,9 +15,9 @@
 
           <div class="input-group mt-3 mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" style="width: 145px;">Patient Id</span>
+              <span class="input-group-text" style="width: 145px;">Patient Name</span>
             </div>
-            <select formControlName="patientid" class="form-control">
+            <select disabled formControlName="patientid" class="form-control">
               <option *ngFor="let patient of patients| async;"
                       [value]=[patient.id]>{{ patient.name }} [ {{ patient.dob | date:'dd.MM.yyyy' }} ]
               </option>
@@ -29,7 +29,7 @@
 
           <div class="input-group mt-3 mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" style="width: 145px;">Doctor Id</span>
+              <span class="input-group-text" style="width: 145px;">Doctor Name</span>
             </div>
             <select formControlName="doctorid" class="form-control">
               <option *ngFor="let doctor of doctors| async;"
@@ -118,7 +118,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 145px;">Allergies</span>
               </div>
-              <input formControlName="{{ i }}" type="text" class="form-control">
+              <select formControlName="{{ i }}" class="form-control">
+                <option *ngFor="let commonAllergy of allergyList;" [value]="commonAllergy">
+                  {{ commonAllergy }}
+                </option>
+                <option value="" selected></option>
+              </select>
+              <!--<input formControlName="{{ i }}" type="text" class="form-control">-->
               <button type="button" class="btn btn-primary" (click)="removeAllergies(i)">
                 <i class="fas fa-times"></i>
               </button>
@@ -132,7 +138,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 145px;">Disabilities</span>
               </div>
-              <input formControlName="{{ i }}" type="text" class="form-control">
+              <select formControlName="{{ i }}" class="form-control">
+                <option *ngFor="let commonDisability of disabilityList;" [value]="commonDisability">
+                  {{ commonDisability }}
+                </option>
+                <option value="" selected></option>
+              </select>
+              <!--<input formControlName="{{ i }}" type="text" class="form-control">-->
               <button type="button" class="btn btn-primary" (click)="removeDisabilities(i)">
                 <i class="fas fa-times"></i>
               </button>
@@ -145,7 +157,16 @@
             <div *ngFor="let medicine of medicines.controls; let i = index" class="form-group mt-3 mb-3">
               <h5 class="text-center">Medicines:</h5>
               <div formGroupName="{{ i }}" class="input-group">
-                <input placeholder="Medicine Name" formControlName="drugname" type="text" class="form-control">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="width: 145px;">Medicine</span>
+                </div>
+                <select formControlName="drugname" class="form-control">
+                  <option *ngFor="let commonMedicine of medicineList" [value]="commonMedicine">
+                    {{ commonMedicine }}
+                  </option>
+                  <option value="" selected>Drug List</option>
+                </select>
+                <!--<input placeholder="Medicine Name" formControlName="drugname" type="text" class="form-control">-->
                 <input placeholder="Unit" formControlName="unit" type="number" class="form-control">
                 <input placeholder="Dosage" formControlName="dosage" type="number" class="form-control">
                 <button type="button" class="btn btn-primary" (click)="removeMedicines(i)">
@@ -161,7 +182,16 @@
             <div *ngFor="let diet of diets.controls; let i = index" class="form-group mt-3 mb-3">
               <h5 class="text-center">Diets:</h5>
               <div formGroupName="{{ i }}" class="input-group">
-                <input placeholder="Diet name" formControlName="dietname" type="text" class="form-control">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="width: 145px;">Diet</span>
+                </div>
+                <select formControlName="dietname" class="form-control">
+                  <option *ngFor="let commonDiet of dietList" [value]="commonDiet">
+                    {{ commonDiet }}
+                  </option>
+                  <option value="" selected>Diet List</option>
+                </select>
+                <!--<input placeholder="Diet name" formControlName="dietname" type="text" class="form-control">-->
                 <input placeholder="Description" formControlName="description" type="text" class="form-control">
                 <button type="button" class="btn btn-primary" (click)="removeDiets(i)">
                   <i class="fas fa-times"></i>

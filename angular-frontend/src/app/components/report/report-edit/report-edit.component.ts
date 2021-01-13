@@ -20,6 +20,10 @@ export class ReportEditComponent implements OnInit {
   patientID: string;
   patients: Observable<Patient[]>;
   doctors: Observable<Doctor[]>;
+  allergyList: string[];
+  disabilityList: string[];
+  medicineList: string[];
+  dietList: string[];
 
   // Build Report Form
   reportForm = this.fb.group({
@@ -104,6 +108,10 @@ export class ReportEditComponent implements OnInit {
   ngOnInit() {
     this.doctors = this.doctorService.getAll();
     this.patients = this.patientService.getAll();
+    this.allergyList = this.reportService.getAllergies();
+    this.disabilityList = this.reportService.getDisabilities();
+    this.medicineList = this.reportService.getMedicines();
+    this.dietList = this.reportService.getDiets();
     this.reportID = this.route.snapshot.params['id'.toString()];
     this.reportService.get(this.reportID).subscribe(
       reportData => {

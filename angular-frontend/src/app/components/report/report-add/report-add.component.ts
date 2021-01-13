@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Report } from '../../../classes/report';
 import { ReportService } from '../../../services/report.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Diet } from '../../../classes/diet';
 
 @Component({
   selector: 'app-report-add',
