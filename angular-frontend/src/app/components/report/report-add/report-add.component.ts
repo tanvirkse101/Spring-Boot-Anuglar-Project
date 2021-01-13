@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Report } from '../../../classes/report';
 import { ReportService } from '../../../services/report.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Diet } from '../../../classes/diet';
 
 @Component({
   selector: 'app-report-add',
@@ -24,6 +25,8 @@ export class ReportAddComponent implements OnInit {
   patient: Patient;
   allergyList: string[];
   disabilityList: string[];
+  medicineList: string[];
+  dietList: string[];
 
   // Build Report Form
   reportForm = this.fb.group({
@@ -109,6 +112,8 @@ export class ReportAddComponent implements OnInit {
     this.patients = this.patientService.getAll();
     this.allergyList = this.reportService.getAllergies();
     this.disabilityList = this.reportService.getDisabilities();
+    this.medicineList = this.reportService.getMedicines();
+    this.dietList = this.reportService.getDiets();
     this.patientID = this.route.snapshot.params['id'.toString()];
     this.patient = new Patient();
     if (this.patientID) {

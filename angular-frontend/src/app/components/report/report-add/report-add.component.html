@@ -158,7 +158,16 @@
             <div *ngFor="let medicine of medicines.controls; let i = index" class="form-group mt-3 mb-3">
               <h5 class="text-center">Medicines:</h5>
               <div formGroupName="{{ i }}" class="input-group">
-                <input placeholder="Medicine Name" formControlName="drugname" type="text" class="form-control">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="width: 145px;">Medicine</span>
+                </div>
+                <select formControlName="drugname" class="form-control">
+                  <option *ngFor="let commonMedicine of medicineList" [value]="commonMedicine">
+                    {{ commonMedicine }}
+                  </option>
+                  <option value="" selected>Drug List</option>
+                </select>
+                <!--<input placeholder="Medicine Name" formControlName="drugname" type="text" class="form-control">-->
                 <input placeholder="Unit" formControlName="unit" type="number" class="form-control">
                 <input placeholder="Dosage" formControlName="dosage" type="number" class="form-control">
                 <button type="button" class="btn btn-secondary" (click)="removeMedicines(i)">
@@ -174,7 +183,16 @@
             <div *ngFor="let diet of diets.controls; let i = index" class="form-group mt-3 mb-3">
               <h5 class="text-center">Diets:</h5>
               <div formGroupName="{{ i }}" class="input-group">
-                <input placeholder="Diet name" formControlName="dietname" type="text" class="form-control">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="width: 145px;">Diet</span>
+                </div>
+                <select formControlName="dietname" class="form-control">
+                  <option *ngFor="let commonDiet of dietList" [value]="commonDiet">
+                    {{ commonDiet }}
+                  </option>
+                  <option value="" selected>Diet List</option>
+                </select>
+                <!--<input placeholder="Diet name" formControlName="dietname" type="text" class="form-control">-->
                 <input placeholder="Description" formControlName="description" type="text" class="form-control">
                 <button type="button" class="btn btn-secondary" (click)="removeDiets(i)">
                   <i class="fas fa-times"></i>

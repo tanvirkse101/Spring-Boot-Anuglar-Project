@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Report } from '../classes/report';
+import { Diet } from '../classes/diet';
 
 const baseUrl = 'http://localhost:8080/api/reports';
 
@@ -27,6 +28,27 @@ export class ReportService {
     'Muscular dystrophy'
   ];
 
+  private medicines: string[] = [
+    'Lisinopril',
+    'Napa',
+    'Ace',
+    'Atorvastatin',
+    'Levothyroxine',
+    'Metformin',
+    'Amlodipine',
+    'Metoprolol',
+    'Omeprazole',
+    'Losartan',
+    'Albuterol'
+  ];
+
+  private diets: string[] = [
+    'Keto',
+    'Low Fat',
+    'Vegetarian',
+    'Carnivore',
+  ];
+
   private reportSubject = new Subject<any>();
 
   constructor(private http: HttpClient) {
@@ -47,6 +69,14 @@ export class ReportService {
 
   getDisabilities() {
     return this.disabilities.slice();
+  }
+
+  getMedicines() {
+    return this.medicines.slice();
+  }
+
+  getDiets() {
+    return this.diets.slice();
   }
 
   getAll(): Observable<Report[]> {
