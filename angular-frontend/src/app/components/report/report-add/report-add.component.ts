@@ -22,6 +22,8 @@ export class ReportAddComponent implements OnInit {
   patients: Observable<Patient[]>;
   doctors: Observable<Doctor[]>;
   patient: Patient;
+  allergyList: string[];
+  disabilityList: string[];
 
   // Build Report Form
   reportForm = this.fb.group({
@@ -105,6 +107,8 @@ export class ReportAddComponent implements OnInit {
   ngOnInit() {
     this.doctors = this.doctorService.getAll();
     this.patients = this.patientService.getAll();
+    this.allergyList = this.reportService.getAllergies();
+    this.disabilityList = this.reportService.getDisabilities();
     this.patientID = this.route.snapshot.params['id'.toString()];
     this.patient = new Patient();
     if (this.patientID) {

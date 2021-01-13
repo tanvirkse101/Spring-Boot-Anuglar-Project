@@ -9,6 +9,24 @@ const baseUrl = 'http://localhost:8080/api/reports';
   providedIn: 'root'
 })
 export class ReportService {
+
+  private allergies: string[] = [
+    'Nuts',
+    'Pollen',
+    'Dust mites',
+    'Mold'
+  ];
+
+  private disabilities: string[] = [
+    'Arthritis',
+    'Deaf',
+    'Blind',
+    'Mute',
+    'Cerebral palsy',
+    'Spinal cord injury',
+    'Muscular dystrophy'
+  ];
+
   private reportSubject = new Subject<any>();
 
   constructor(private http: HttpClient) {
@@ -22,7 +40,14 @@ export class ReportService {
   getListUpdateAlert(): Observable<any> {
     return this.reportSubject.asObservable();
   }
-  // Alert System
+
+  getAllergies() {
+    return this.allergies.slice();
+  }
+
+  getDisabilities() {
+    return this.disabilities.slice();
+  }
 
   getAll(): Observable<Report[]> {
     return this.http.get<Report[]>(baseUrl);

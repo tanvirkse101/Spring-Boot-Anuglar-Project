@@ -119,7 +119,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 145px;">Allergies</span>
               </div>
-              <input formControlName="{{ i }}" type="text" class="form-control">
+              <select formControlName="{{ i }}" class="form-control">
+                <option *ngFor="let commonAllergy of allergyList;" [value]="commonAllergy">
+                  {{ commonAllergy }}
+                </option>
+                <option value="" selected></option>
+              </select>
+              <!--<input formControlName="{{ i }}" type="text" class="form-control">-->
               <button type="button" class="btn btn-secondary" (click)="removeAllergies(i)">
                 <i class="fas fa-times"></i>
               </button>
@@ -133,7 +139,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" style="width: 145px;">Disabilities</span>
               </div>
-              <input formControlName="{{ i }}" type="text" class="form-control">
+              <select formControlName="{{ i }}" class="form-control">
+                <option *ngFor="let commonDisability of disabilityList;" [value]="commonDisability">
+                  {{ commonDisability }}
+                </option>
+                <option value="" selected></option>
+              </select>
+              <!--<input formControlName="{{ i }}" type="text" class="form-control">-->
               <button type="button" class="btn btn-secondary" (click)="removeDisabilities(i)">
                 <i class="fas fa-times"></i>
               </button>
