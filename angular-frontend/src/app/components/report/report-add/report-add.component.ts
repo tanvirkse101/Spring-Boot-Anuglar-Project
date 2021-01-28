@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Report } from '../../../classes/report';
 import { ReportService } from '../../../services/report.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Medicine } from '../../../classes/medicine';
+import { MedicineService } from '../../../services/medicine.service';
 
 @Component({
   selector: 'app-report-add',
@@ -24,8 +26,9 @@ export class ReportAddComponent implements OnInit {
   patient: Patient;
   allergyList: string[];
   disabilityList: string[];
-  medicineList: string[];
+  medicineList: Observable<Medicine[]>;
   dietList: string[];
+  selectedMedicine: Medicine = new Medicine();
 
   // Build Report Form
   reportForm = this.fb.group({
@@ -49,6 +52,7 @@ export class ReportAddComponent implements OnInit {
   constructor(private patientService: PatientService,
               private doctorService: DoctorService,
               private reportService: ReportService,
+              private medicineService: MedicineService,
               private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder) {
@@ -111,7 +115,7 @@ export class ReportAddComponent implements OnInit {
     this.patients = this.patientService.getAll();
     this.allergyList = this.reportService.getAllergies();
     this.disabilityList = this.reportService.getDisabilities();
-    this.medicineList = this.reportService.getMedicines();
+    this.medicineList = this.medicineService.getAllMedicine();
     this.dietList = this.reportService.getDiets();
     this.patientID = this.route.snapshot.params['id'.toString()];
     this.patient = new Patient();
@@ -149,6 +153,15 @@ export class ReportAddComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.save();
+  }
+
+  setMedicine(index: string) {
+    this.medicineService.getMedicine(index).subscribe(
+      medicineData => {
+        this.selectedMedicine = medicineData;
+        console.log(this.selectedMedicine);
+      }
+    );
   }
 
   gotoList() {

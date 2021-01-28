@@ -6,8 +6,11 @@
           <!-- Buttons --->
           <div class="row">
             <div class="col-md-12">
-              <button type="submit" class="btn btn-primary" [disabled]="reportForm.invalid">Save changes</button>
-              <button type="button" class="btn btn-danger ml-2" (click)="cancelAdd()">Cancel</button>
+              <button type="submit" class="btn btn-primary" [disabled]="reportForm.invalid"><i class="fas fa-save"></i>
+                Save changes
+              </button>
+              <button type="button" class="btn btn-danger ml-2" (click)="cancelAdd()">Cancel <i
+                class="far fa-times-circle"></i></button>
             </div>
           </div>
 
@@ -161,8 +164,8 @@
                   <span class="input-group-text" style="width: 145px;">Medicine</span>
                 </div>
                 <select formControlName="drugname" class="form-control">
-                  <option *ngFor="let commonMedicine of medicineList" [value]="commonMedicine">
-                    {{ commonMedicine }}
+                  <option *ngFor="let commonMedicine of medicineList | async;" [value]="commonMedicine.drugname">
+                    {{ commonMedicine.drugname }}
                   </option>
                   <option value="" selected>Drug List</option>
                 </select>

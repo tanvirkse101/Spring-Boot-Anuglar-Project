@@ -18,6 +18,10 @@ import { ReportAddComponent } from './components/report/report-add/report-add.co
 import { ReportDetailsComponent } from './components/report/report-details/report-details.component';
 import { ReportEditComponent } from './components/report/report-edit/report-edit.component';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
+import { MedicineComponent } from './components/medicine/medicine.component';
+import { MedicineAddComponent } from './components/medicine/medicine-add/medicine-add.component';
+import { MedicineDetailsComponent } from './components/medicine/medicine-details/medicine-details.component';
+import { MedicineEditComponent } from './components/medicine/medicine-edit/medicine-edit.component';
 
 
 const routes: Routes = [
@@ -48,6 +52,13 @@ const routes: Routes = [
       { path: 'add/:id', component: ReportAddComponent },
       { path: 'details/:id', component: ReportDetailsComponent },
       { path: 'update/:id', component: ReportEditComponent }
+    ]
+  },
+  {
+    path: 'medicines', component: MedicineComponent, children: [
+      { path: 'add', component: MedicineAddComponent },
+      { path: 'details/:id', component: MedicineDetailsComponent },
+      { path: 'update/:id', component: MedicineEditComponent }
     ]
   },
   {

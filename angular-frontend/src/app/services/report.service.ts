@@ -27,19 +27,19 @@ export class ReportService {
     'Muscular dystrophy'
   ];
 
-  private medicines: string[] = [
-    'Lisinopril',
-    'Napa',
-    'Ace',
-    'Atorvastatin',
-    'Levothyroxine',
-    'Metformin',
-    'Amlodipine',
-    'Metoprolol',
-    'Omeprazole',
-    'Losartan',
-    'Albuterol'
-  ];
+  // private medicines: string[] = [
+  //   'Lisinopril',
+  //   'Napa',
+  //   'Ace',
+  //   'Atorvastatin',
+  //   'Levothyroxine',
+  //   'Metformin',
+  //   'Amlodipine',
+  //   'Metoprolol',
+  //   'Omeprazole',
+  //   'Losartan',
+  //   'Albuterol'
+  // ];
 
   private diets: string[] = [
     'Keto',
@@ -70,9 +70,9 @@ export class ReportService {
     return this.disabilities.slice();
   }
 
-  getMedicines() {
-    return this.medicines.slice();
-  }
+  // getMedicines() {
+  //   return this.medicines.slice();
+  // }
 
   getDiets() {
     return this.diets.slice();

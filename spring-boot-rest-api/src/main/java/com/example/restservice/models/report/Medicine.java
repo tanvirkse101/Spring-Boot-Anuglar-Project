@@ -1,6 +1,12 @@
 package com.example.restservice.models.report;
 
-class Medicine {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "medicines")
+public class Medicine {
+    @Id
+    private String id;
     private String drugname;
     private Double unit;
     private Double dosage;
@@ -14,6 +20,8 @@ class Medicine {
     public Medicine() {
 
     }
+
+    public String getId() { return id; }
 
     public String getDrugname() {
         return drugname;

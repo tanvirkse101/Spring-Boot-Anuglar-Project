@@ -32,6 +32,12 @@ import { PatientService } from './services/patient.service';
 import { ReportService } from './services/report.service';
 import { PrescriptionComponent } from './components/prescription/prescription.component';
 import { DatePipe } from '@angular/common';
+import { MedicineAddComponent } from './components/medicine/medicine-add/medicine-add.component';
+import { MedicineEditComponent } from './components/medicine/medicine-edit/medicine-edit.component';
+import { MedicineListComponent } from './components/medicine/medicine-list/medicine-list.component';
+import { MedicineDetailsComponent } from './components/medicine/medicine-details/medicine-details.component';
+import { MedicineComponent } from './components/medicine/medicine.component';
+import { MedicineService } from './services/medicine.service';
 
 @NgModule({
   declarations: [
@@ -58,16 +64,21 @@ import { DatePipe } from '@angular/common';
     ReportEditComponent,
     ReportAddComponent,
     PrescriptionComponent,
+    MedicineAddComponent,
+    MedicineEditComponent,
+    MedicineListComponent,
+    MedicineDetailsComponent,
+    MedicineComponent,
   ],
-    imports: [
-        RouterModule,
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-    ],
-  providers: [ DoctorService, PatientService, ReportService, DatePipe ],
+  imports: [
+    RouterModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [ DoctorService, PatientService, ReportService, MedicineService, DatePipe ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

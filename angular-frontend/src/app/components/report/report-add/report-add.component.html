@@ -161,15 +161,18 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" style="width: 145px;">Medicine</span>
                 </div>
-                <select formControlName="drugname" class="form-control">
-                  <option *ngFor="let commonMedicine of medicineList" [value]="commonMedicine">
-                    {{ commonMedicine }}
+                <select #medicineName (change)="setMedicine(medicineName.value)" formControlName="drugname" class="form-control">
+                  <option *ngFor="let commonMedicine of medicineList | async"
+                          [value]="commonMedicine.id">
+                    {{ commonMedicine.drugname }}
                   </option>
                   <option value="" selected>Drug List</option>
                 </select>
                 <!--<input placeholder="Medicine Name" formControlName="drugname" type="text" class="form-control">-->
-                <input placeholder="Unit" formControlName="unit" type="number" class="form-control">
-                <input placeholder="Dosage" formControlName="dosage" type="number" class="form-control">
+                <input placeholder="Unit" value="{{ selectedMedicine.unit }}" formControlName="unit" type="number"
+                       class="form-control">
+                <input placeholder="Dosage" value="{{ selectedMedicine.dosage }}" formControlName="dosage" type="number"
+                       class="form-control">
                 <button type="button" class="btn btn-secondary" (click)="removeMedicines(i)">
                   <i class="fas fa-times"></i>
                 </button>

@@ -19,7 +19,6 @@ export class DoctorDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.doctor = new Doctor();
-
     this.route.params.subscribe(
       (params: Params) => {
         this.id = params['id'.toString()];

@@ -8,6 +8,8 @@ import { PatientService } from '../../../services/patient.service';
 import { DoctorService } from '../../../services/doctor.service';
 import { ReportService } from '../../../services/report.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Medicine } from '../../../classes/medicine';
+import { MedicineService } from '../../../services/medicine.service';
 
 @Component({
   selector: 'app-report-edit',
@@ -22,7 +24,7 @@ export class ReportEditComponent implements OnInit {
   doctors: Observable<Doctor[]>;
   allergyList: string[];
   disabilityList: string[];
-  medicineList: string[];
+  medicineList: Observable<Medicine[]>;
   dietList: string[];
 
   // Build Report Form
@@ -47,6 +49,7 @@ export class ReportEditComponent implements OnInit {
   constructor(private patientService: PatientService,
               private doctorService: DoctorService,
               private reportService: ReportService,
+              private medicineService: MedicineService,
               private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder) {
@@ -110,7 +113,7 @@ export class ReportEditComponent implements OnInit {
     this.patients = this.patientService.getAll();
     this.allergyList = this.reportService.getAllergies();
     this.disabilityList = this.reportService.getDisabilities();
-    this.medicineList = this.reportService.getMedicines();
+    this.medicineList = this.medicineService.getAllMedicine();
     this.dietList = this.reportService.getDiets();
     this.reportID = this.route.snapshot.params['id'.toString()];
     this.reportService.get(this.reportID).subscribe(
