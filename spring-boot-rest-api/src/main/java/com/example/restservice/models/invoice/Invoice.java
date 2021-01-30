@@ -17,22 +17,23 @@ public class Invoice {
     @CreatedDate
     private Date createddate;
     private String paymentmethod;
-    private List<Test> Tests;
+    private List<Test> tests;
 
-    public Invoice(String patientid, String doctorid, Date createddate, String paymentmethod, List<Test> tests) {
+    public Invoice(String id, String patientid, String doctorid, Date createddate, String paymentmethod, List<Test> tests) {
+        this.id = id;
         this.patientid = patientid;
         this.doctorid = doctorid;
         this.createddate = createddate;
         this.paymentmethod = paymentmethod;
-        Tests = tests;
-    }
-
-    public Invoice() {
-
+        this.tests = tests;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPatientid() {
@@ -68,11 +69,11 @@ public class Invoice {
     }
 
     public List<Test> getTests() {
-        return Tests;
+        return tests;
     }
 
     public void setTests(List<Test> tests) {
-        Tests = tests;
+        this.tests = tests;
     }
 
     @Override
@@ -83,7 +84,7 @@ public class Invoice {
                 ", doctorid='" + doctorid + '\'' +
                 ", createddate=" + createddate +
                 ", paymentmethod='" + paymentmethod + '\'' +
-                ", Tests=" + Tests +
+                ", tests=" + tests +
                 '}';
     }
 }
