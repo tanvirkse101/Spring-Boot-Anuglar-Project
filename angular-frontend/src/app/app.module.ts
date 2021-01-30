@@ -38,6 +38,15 @@ import { MedicineListComponent } from './components/medicine/medicine-list/medic
 import { MedicineDetailsComponent } from './components/medicine/medicine-details/medicine-details.component';
 import { MedicineComponent } from './components/medicine/medicine.component';
 import { MedicineService } from './services/medicine.service';
+import { TestComponent } from './components/test/test.component';
+import { TestAddComponent } from './components/test/test-add/test-add.component';
+import { TestListComponent } from './components/test/test-list/test-list.component';
+import { TestDetailsComponent } from './components/test/test-details/test-details.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
+import { InvoiceListComponent } from './components/invoice/invoice-list/invoice-list.component';
+import { InvoiceDetailsComponent } from './components/invoice/invoice-details/invoice-details.component';
+import { InvoiceAddComponent } from './components/invoice/invoice-add/invoice-add.component';
+import { InvoiceEditComponent } from './components/invoice/invoice-edit/invoice-edit.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +78,15 @@ import { MedicineService } from './services/medicine.service';
     MedicineListComponent,
     MedicineDetailsComponent,
     MedicineComponent,
+    TestComponent,
+    TestAddComponent,
+    TestListComponent,
+    TestDetailsComponent,
+    InvoiceComponent,
+    InvoiceListComponent,
+    InvoiceDetailsComponent,
+    InvoiceAddComponent,
+    InvoiceEditComponent,
   ],
   imports: [
     RouterModule,
