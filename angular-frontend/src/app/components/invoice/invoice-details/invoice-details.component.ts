@@ -36,11 +36,11 @@ export class InvoiceDetailsComponent implements OnInit {
     this.invoice = new Invoice();
     this.currentDate = new Date();
 
-    this.invoiceId = this.route.snapshot.params['id'.toString()];
     this.invoiceService.get(this.invoiceId).subscribe(
       (invoiceData) => {
         this.invoice = invoiceData;
         console.log(this.invoice);
+        this.invoiceId = this.route.snapshot.params['id'.toString()];
         this.patientService.get(this.invoice.patientid).subscribe(
           (patientData: Patient) => {
             this.patient = patientData;
