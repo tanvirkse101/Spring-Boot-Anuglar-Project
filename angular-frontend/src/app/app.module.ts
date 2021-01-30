@@ -47,6 +47,9 @@ import { InvoiceListComponent } from './components/invoice/invoice-list/invoice-
 import { InvoiceDetailsComponent } from './components/invoice/invoice-details/invoice-details.component';
 import { InvoiceAddComponent } from './components/invoice/invoice-add/invoice-add.component';
 import { InvoiceEditComponent } from './components/invoice/invoice-edit/invoice-edit.component';
+import { InvoiceService } from './services/invoice.service';
+import { TestService } from './services/test.service';
+import { InvoiceprintComponent } from './components/invoiceprint/invoiceprint.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +90,7 @@ import { InvoiceEditComponent } from './components/invoice/invoice-edit/invoice-
     InvoiceDetailsComponent,
     InvoiceAddComponent,
     InvoiceEditComponent,
+    InvoiceprintComponent,
   ],
   imports: [
     RouterModule,
@@ -96,7 +100,7 @@ import { InvoiceEditComponent } from './components/invoice/invoice-edit/invoice-
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [ DoctorService, PatientService, ReportService, MedicineService, DatePipe ],
+  providers: [ DoctorService, PatientService, ReportService, MedicineService, DatePipe, InvoiceService, TestService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

@@ -1,15 +1,48 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { TestService } from '../../../services/test.service';
+import { Test } from '../../../classes/test';
 
 @Component({
   selector: 'app-test-details',
   templateUrl: './test-details.component.html',
-  styleUrls: ['./test-details.component.css']
+  styleUrls: [ './test-details.component.css' ]
 })
 export class TestDetailsComponent implements OnInit {
 
-  constructor() { }
+  testId: string;
+  test: Test;
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private testService: TestService) {
   }
 
+  ngOnInit(): void {
+    this.test = new Test();
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.testId = params['id'.toString()];
+        this.testService.getTest(this.testId).subscribe(
+          testData => {
+            this.test = testData;
+          }
+        );
+      }
+    );
+  }
+
+  deleteTest(id: string) {
+    this.testService.deleteTest(id).subscribe(
+      data => {
+        this.testService.sendListUpdateAlert('Deleted');
+      },
+      error => console.log(error)
+    );
+    this.router.navigate([ 'tests' ]);
+  }
+
+  // updateMedicine(id: string) {
+  //   this.router.navigate([ 'tests/update', id ]);
+  // }
 }

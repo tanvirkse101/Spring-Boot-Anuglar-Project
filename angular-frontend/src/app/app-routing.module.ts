@@ -22,6 +22,13 @@ import { MedicineComponent } from './components/medicine/medicine.component';
 import { MedicineAddComponent } from './components/medicine/medicine-add/medicine-add.component';
 import { MedicineDetailsComponent } from './components/medicine/medicine-details/medicine-details.component';
 import { MedicineEditComponent } from './components/medicine/medicine-edit/medicine-edit.component';
+import { TestComponent } from './components/test/test.component';
+import { TestAddComponent } from './components/test/test-add/test-add.component';
+import { TestDetailsComponent } from './components/test/test-details/test-details.component';
+import { InvoiceAddComponent } from './components/invoice/invoice-add/invoice-add.component';
+import { InvoiceDetailsComponent } from './components/invoice/invoice-details/invoice-details.component';
+import { InvoiceEditComponent } from './components/invoice/invoice-edit/invoice-edit.component';
+import { InvoiceprintComponent } from './components/invoiceprint/invoiceprint.component';
 
 
 const routes: Routes = [
@@ -32,6 +39,7 @@ const routes: Routes = [
   { path: 'create', component: CreateTutorialComponent },
   { path: 'update/:id', component: UpdateTutorialComponent },
   { path: 'prescriptions/:id', component: PrescriptionComponent },
+  { path: 'invoiceprint/:id', component: InvoiceprintComponent },
   {
     path: 'doctors', component: DoctorComponent, children: [
       { path: 'add', component: DoctorAddComponent },
@@ -59,6 +67,20 @@ const routes: Routes = [
       { path: 'add', component: MedicineAddComponent },
       { path: 'details/:id', component: MedicineDetailsComponent },
       { path: 'update/:id', component: MedicineEditComponent }
+    ]
+  },
+  {
+    path: 'tests', component: TestComponent, children: [
+      { path: 'add', component: TestAddComponent },
+      { path: 'details/:id', component: TestDetailsComponent },
+      // { path: 'update/:id', component: TestEditComponent }
+    ]
+  },
+  {
+    path: 'invoices', component: TestComponent, children: [
+      { path: 'add', component: InvoiceAddComponent },
+      { path: 'details/:id', component: InvoiceDetailsComponent },
+      { path: 'update/:id', component: InvoiceEditComponent }
     ]
   },
   {
