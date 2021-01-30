@@ -14,5 +14,5 @@ export class Invoice {
   doctorid: string;
   paymentmethod: string;
   createddate: Date;
-  diets: Test[];
+  tests: Test[];
 }
