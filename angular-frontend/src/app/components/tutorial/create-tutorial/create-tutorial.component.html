@@ -1,7 +1,7 @@
 <div class="row row justify-content-center align-self-center">
   <div [hidden]="submitted" style="width: 400px;">
     <h3>Create Tutorial</h3>
-    <form (ngSubmit)="onSubmit()">
+    <form enctype="multipart/form-data" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" required [(ngModel)]="tutorial.title" name="title">
@@ -10,6 +10,11 @@
         <label for="description">Description</label>
         <input type="text" class="form-control" id="description" required [(ngModel)]="tutorial.description"
                name="description">
+      </div>
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" class="form-control" id="image" required (change)="onFileChanged($event)"
+               name="image">
       </div>
       <div class="form-group">
         <label>Published?</label><br>
