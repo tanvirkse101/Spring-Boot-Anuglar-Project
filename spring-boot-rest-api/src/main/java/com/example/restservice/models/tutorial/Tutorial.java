@@ -1,5 +1,6 @@
 package com.example.restservice.models.tutorial;
 
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,15 +12,15 @@ public class Tutorial {
     private String title;
     private String description;
     private boolean published;
+    private Binary image;
 
     public Tutorial() {
 
     }
 
-    public Tutorial(String title, String description, boolean published) {
+    public Tutorial(String title, String description) {
         this.title = title;
         this.description = description;
-        this.published = published;
     }
 
     public String getId() {
@@ -52,6 +53,14 @@ public class Tutorial {
 
     public boolean getPublished() {
         return published;
+    }
+
+    public Binary getImage() {
+        return image;
+    }
+
+    public void setImage(Binary image) {
+        this.image = image;
     }
 
     @Override
