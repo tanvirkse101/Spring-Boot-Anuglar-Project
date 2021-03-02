@@ -99,51 +99,55 @@ public class TutorialController {
         }
     }
 
-    @PostMapping(value = "/tutorials/image",
-            consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE})
-    public String createTutorialWithImage(@RequestParam("title") String title,
-                                          @RequestParam("description") String description,
-                                          @RequestPart("image") MultipartFile image) throws IOException {
+// @PostMapping(value = "/tutorials/image",
+//         consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
+//         produces = {MediaType.APPLICATION_JSON_VALUE})
+// public String createTutorialWithImage(@RequestParam("title") String title,
+//                                       @RequestParam("description") String description,
+//                                       @RequestPart("image") MultipartFile image) throws IOException {
+//
+//     System.out.println("Called");
+//     boolean published = true;
+//     String id = tutorialService.addTutorial(title, description, image);
+//     return "redirect:/photos/" + id;
+// }
 
-        System.out.println("Called");
-        boolean published = true;
-        String id = tutorialService.addTutorial(title, description, image);
-        return "redirect:/photos/" + id;
-    }
-
-    @PostMapping(value = "/tutorialss",
+    @PostMapping(value = "/tutorialimage",
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public String createTutorials(@RequestPart("title") String title,
                                   @RequestPart("description") String description,
                                   @RequestPart(required = false) MultipartFile image) {
         try {
-            System.out.println("Image");
             System.out.println(image.getBytes());
             Tutorial tutorial = new Tutorial(title, description);
-            tutorial.setImage(
-                    new Binary(BsonBinarySubType.BINARY, image.getBytes()));
-            System.out.println("test2");
+            tutorial.setImage(new Binary(BsonBinarySubType.BINARY, image.getBytes()));
             System.out.println(tutorial.getImage());
             tutorial = tutorialRepository.save(tutorial);
-//            String id = tutorialService.addTutorial(title, description, image);
             return "Inserted";
         } catch (Exception e) {
-
             return e.getMessage();
         }
     }
 
-    @GetMapping("/tutorials/image/{id}")
+//    @GetMapping("/tutorialimage/{id}")
+//    public String getTutorialWithImage(@PathVariable String id, Model model) {
+//        Tutorial tutorial = tutorialService.getTutorial(id);
+//        model.addAttribute("title", tutorial.getTitle());
+//        model.addAttribute("description", tutorial.getDescription());
+//        model.addAttribute("image",
+//                Base64.getEncoder().encodeToString(tutorial.getImage().getData()));
+//        return "photos";
+//    }
 
-    public String getTutorialWithImage(@PathVariable String id, Model model) {
-        Tutorial tutorial = tutorialService.getTutorial(id);
+    @GetMapping("/tutorialimage/{id}")
+    public ResponseEntity<Tutorial> getTutorialWithImageById(@PathVariable("id") String id, Model model) {
+        Tutorial tutorial = tutorialRepository.findById(id).get();
         model.addAttribute("title", tutorial.getTitle());
         model.addAttribute("description", tutorial.getDescription());
         model.addAttribute("image",
                 Base64.getEncoder().encodeToString(tutorial.getImage().getData()));
-        return "photos";
+        return new ResponseEntity<>(tutorial, HttpStatus.OK);
     }
 
     @PutMapping("/tutorials/{id}")
