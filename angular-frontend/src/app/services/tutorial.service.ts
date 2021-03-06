@@ -34,6 +34,10 @@ export class TutorialService {
       {headers: {'Content-Type': 'multipart/form-data'}});
   }
 
+  getTutorialWithImage(id: string): Observable<any>{
+    return this.http.get(`http://localhost:8080/api/tutorialimage/${id}`);
+  }
+
   update(id: string, data: object): Observable<object> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }

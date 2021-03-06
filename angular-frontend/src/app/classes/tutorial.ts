@@ -4,5 +4,7 @@ export class Tutorial {
   title: string;
   description: string;
   published: boolean;
-  // image: File;
+  image: File;
+  // image: string;
+  // image: HTMLImageElement;
 }

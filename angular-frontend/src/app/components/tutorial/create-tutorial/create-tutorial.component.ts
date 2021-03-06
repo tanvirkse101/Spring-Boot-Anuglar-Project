@@ -30,24 +30,24 @@ export class CreateTutorialComponent implements OnInit {
   }
 
   save() {
-    // this.tutorialService
-    //   .create(this.tutorial).subscribe(data => {
-    //     console.log(data);
-    //     this.tutorial = new Tutorial();
-    //     console.log(this.tutorial);
-    //     this.gotoList();
-    //   },
-    //   error => console.log(error));
+    this.tutorialService
+      .create(this.tutorial).subscribe(data => {
+        console.log(data);
+        this.tutorial = new Tutorial();
+        console.log(this.tutorial);
+        this.gotoList();
+      },
+      error => console.log(error));
     console.log(this.tutorial.title);
     console.log(this.selectedFile.type);
-    this.tutorialService.createWithImage(this.tutorial.title,
-      this.tutorial.description,
-      this.tutorial.published,
-      this.selectedFile).subscribe(data => {
-        this.tutorial = new Tutorial();
-        this.gotoList();
-      }, error => console.log(error)
-    );
+    // this.tutorialService.createWithImage(this.tutorial.title,
+    //   this.tutorial.description,
+    //   // this.tutorial.published,
+    //   this.selectedFile).subscribe(data => {
+    //     this.tutorial = new Tutorial();
+    //     this.gotoList();
+    //   }, error => console.log(error)
+    // );
   }
 
   onSubmit() {
